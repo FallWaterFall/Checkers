@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Color
 {
@@ -23,6 +24,8 @@ public class BoardScript : MonoBehaviour
     [SerializeField] private GameObject EnemyAIobj;
     [SerializeField] private Material onSelectMaterial;
     [SerializeField] private GameObject whiteStonesObj;
+    [SerializeField] private GameObject MenuCanvas;
+    private bool CanvasActivity = false;
     private WhiteStonesHandle WSH;
     private EnemyAI EAI;
     private GameObject[,] Grid = new GameObject[8,8];
@@ -45,6 +48,12 @@ public class BoardScript : MonoBehaviour
         }
         WSH = whiteStonesObj.GetComponent<WhiteStonesHandle>();
         EAI = EnemyAIobj.GetComponent<EnemyAI>();
+        MenuCanvas.SetActive(false);
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ShowCanvas();
     }
     public void SelectCells(int x, int z)
     {
@@ -299,13 +308,11 @@ public class BoardScript : MonoBehaviour
             if (IsXExist(x + 2) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
                 EnemyAttack(x, z, enemyStone, 1);
-                Debug.Log("TRUE");
                 return true;
             }
             if (IsXExist(x - 2) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
                 EnemyAttack(x, z, enemyStone, 2);
-                Debug.Log("TRUE");
                 return true;
             }
         }
@@ -314,17 +321,14 @@ public class BoardScript : MonoBehaviour
             if (IsXExist(x + 2) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
                 EnemyAttack(x, z, enemyStone, 3);
-                Debug.Log("TRUE");
                 return true;
             }
             if (IsXExist(x - 2) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
                 EnemyAttack(x, z, enemyStone, 4);
-                Debug.Log("TRUE");
                 return true;
             }
         }
-        Debug.Log("FALSE");
         return false;
     }
     private void EnemyAttack(int x, int z, GameObject enemyStone, int type)
@@ -358,5 +362,18 @@ public class BoardScript : MonoBehaviour
             whiteStonesObj.GetComponent<WhiteStonesHandle>().FindAndDelete(tempX - 1, tempZ - 1);
             SetOcupied(tempX - 2, tempZ - 2, Color.Black);
         }
+    }
+    public void ShowCanvas()
+    {
+        CanvasActivity = !CanvasActivity;
+        MenuCanvas.SetActive(CanvasActivity);
+    }
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void ExitToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

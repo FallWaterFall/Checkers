@@ -26,6 +26,10 @@ public class EnemyAI : MonoBehaviour
         {
             if (BS.CheckEnemyAttack(enemyStones[i]) == true)
             {
+                while (BS.CheckEnemyAttack(enemyStones[i]))
+                {
+                    Debug.Log("EnemyCombo");
+                }
                 isMoveMake = true;
                 break;
             }
@@ -49,7 +53,6 @@ public class EnemyAI : MonoBehaviour
         {
             if ((int)enemyStones[i].transform.position.x == x && (int)enemyStones[i].transform.position.z == z)
             {
-                Debug.Log("Kill Stone");
                 GameObject obj = enemyStones[i];
                 enemyStones.Remove(obj);
                 Destroy(obj);
@@ -57,8 +60,8 @@ public class EnemyAI : MonoBehaviour
 
                 if (enemyStones.Count == 0)
                 {
-                    Debug.Log("YOU WIN");
-                    this.gameObject.SetActive(false);
+                    BS.ShowCanvas();
+                    //this.gameObject.SetActive(false);
                 }
 
                 return;
