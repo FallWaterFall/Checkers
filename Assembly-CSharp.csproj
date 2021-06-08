@@ -40,8 +40,6 @@
      <Compile Include="Assets\StoneScript.cs" />
      <Compile Include="Assets\WhiteStonesHandle.cs" />
      <Compile Include="Assets\SlotScript.cs" />
-     <Compile Include="Assets\ClickHandle.cs" />
-     <Compile Include="Assets\OpponentStonesScript.cs" />
      <Compile Include="Assets\BoardScript.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2021.1.7f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>

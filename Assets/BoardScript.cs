@@ -4,13 +4,11 @@ using UnityEngine;
 
 public enum Color
 {
-        White,
-        Black,
-        Empty
+    Empty,
+    White,
+    Black
 };
-public class BoardScript : MonoBehaviour
-{
-    private struct SelectedItems
+public struct SelectedItems
     {
         public SelectedItems(GameObject _obj, Material _objMaterial)
         {
@@ -20,76 +18,82 @@ public class BoardScript : MonoBehaviour
         public GameObject obj;
         public Material objMaterial;
     };
+public class BoardScript : MonoBehaviour
+{
     [SerializeField] private GameObject EnemyAIobj;
     [SerializeField] private Material onSelectMaterial;
     [SerializeField] private GameObject whiteStonesObj;
+    private WhiteStonesHandle WSH;
+    private EnemyAI EAI;
     private GameObject[,] Grid = new GameObject[8,8];
-    private List<SelectedItems> CurSelected = new List<SelectedItems>();
+    private int BoardLength;
+    private List<SelectedItems> CurSelectedCells = new List<SelectedItems>();
     private GameObject selectedStone;
     private bool CanAttack = true;
     private bool IsAttackCombo = false;
+    private bool CanSelectAnother = true;
     private void Awake()
     {
-        for (int i = 0; i < Mathf.Sqrt(Grid.Length); i++)
+        BoardLength =(int)Mathf.Sqrt(Grid.Length);
+        for (int i = 0; i < BoardLength; i++)
         {
-            for (int j = 0; j < Mathf.Sqrt(Grid.Length); j++)
+            for (int j = 0; j < BoardLength; j++)
             {
                 Transform temp = this.transform.GetChild(i);
                 Grid[i, j] = temp.GetChild(j).gameObject;
             }
         }
+        WSH = whiteStonesObj.GetComponent<WhiteStonesHandle>();
+        EAI = EnemyAIobj.GetComponent<EnemyAI>();
     }
-    public void OnSelect(int x, int z, GameObject selectedObj)
+    public void SelectCells(int x, int z)
     {
         ClearSelection();
-        
-        CurSelected.Add(new SelectedItems(selectedObj, selectedObj.GetComponent<Renderer>().material));
-        selectedStone = selectedObj;
-        selectedObj.GetComponent<Renderer>().material = onSelectMaterial;
 
-        if (z + 1 >= 0 && z + 1 < Mathf.Sqrt(Grid.Length))
+        if (IsZExist(z + 1))
         {
             //Check movemnt Up-Right
-            if (x + 1 >= 0 && x + 1 < Mathf.Sqrt(Grid.Length))
+            if (IsXExist(x + 1))
             {
                 if (!Grid[x + 1, z + 1].GetComponent<SlotScript>().IsOcupied())
                 {
-                    CurSelected.Add(new SelectedItems(Grid[x + 1, z + 1], Grid[x + 1, z + 1].GetComponent<Renderer>().material));
+                    CurSelectedCells.Add(new SelectedItems(Grid[x + 1, z + 1], Grid[x + 1, z + 1].GetComponent<Renderer>().material));
                     Grid[x + 1, z + 1].GetComponent<Renderer>().material = onSelectMaterial;
                     Grid[x + 1, z + 1].GetComponent<SlotScript>().SetSelection(true);
                 }
             }
             //Check movemnt Up-Right
-            if (x - 1 >= 0 && x - 1 < Mathf.Sqrt(Grid.Length))
+            if (IsXExist(x - 1))
             {
                 if (!Grid[x - 1, z + 1].GetComponent<SlotScript>().IsOcupied())
                 {
-                    CurSelected.Add(new SelectedItems(Grid[x - 1, z + 1], Grid[x - 1, z + 1].GetComponent<Renderer>().material));
+                    CurSelectedCells.Add(new SelectedItems(Grid[x - 1, z + 1], Grid[x - 1, z + 1].GetComponent<Renderer>().material));
                     Grid[x - 1, z + 1].GetComponent<Renderer>().material = onSelectMaterial;
                     Grid[x - 1, z + 1].GetComponent<SlotScript>().SetSelection(true);
                 }
             }
         }
-        SelectionToAttack(x, z);
+        SelectCellsToAttack(x, z);
     }
-    public void SelectionToAttack(int x, int z)
+    public bool SelectCellsToAttack(int x, int z)
     {
         CanAttack = false;
-        int MovesCount = CurSelected.Count;
-        //Check Upper
-        if (z + 2 >= 0 && z + 2 < Mathf.Sqrt(Grid.Length))
+        IsAttackCombo = false;
+        int MovesCount = CurSelectedCells.Count;
+
+        if (IsZExist(z + 2))
         {
-            if (x + 2 >= 0 && x + 2 < Mathf.Sqrt(Grid.Length) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x + 2) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
-                CurSelected.Add(new SelectedItems(Grid[x + 2, z + 2], Grid[x + 2, z + 2].GetComponent<Renderer>().material));
+                CurSelectedCells.Add(new SelectedItems(Grid[x + 2, z + 2], Grid[x + 2, z + 2].GetComponent<Renderer>().material));
                 Grid[x + 2, z + 2].GetComponent<Renderer>().material = onSelectMaterial;
                 Grid[x + 2, z + 2].GetComponent<SlotScript>().SetSelection(true);
                 IsAttackCombo = true;
                 CanAttack = true;
             }
-            if (x - 2 >= 0 && x - 2 < Mathf.Sqrt(Grid.Length) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x - 2) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
-                CurSelected.Add(new SelectedItems(Grid[x - 2, z + 2], Grid[x - 2, z + 2].GetComponent<Renderer>().material));
+                CurSelectedCells.Add(new SelectedItems(Grid[x - 2, z + 2], Grid[x - 2, z + 2].GetComponent<Renderer>().material));
                 Grid[x - 2, z + 2].GetComponent<Renderer>().material = onSelectMaterial;
                 Grid[x - 2, z + 2].GetComponent<SlotScript>().SetSelection(true);
                 IsAttackCombo = true;
@@ -97,119 +101,151 @@ public class BoardScript : MonoBehaviour
             }
         }
         //Check Lower
-        if (z - 2 >= 0 && z - 2 < Mathf.Sqrt(Grid.Length))
+        if (IsZExist(z - 2))
         {
-            if (x + 2 >= 0 && x + 2 < Mathf.Sqrt(Grid.Length) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x + 2) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
-                CurSelected.Add(new SelectedItems(Grid[x + 2, z - 2], Grid[x + 2, z - 2].GetComponent<Renderer>().material));
+                CurSelectedCells.Add(new SelectedItems(Grid[x + 2, z - 2], Grid[x + 2, z - 2].GetComponent<Renderer>().material));
                 Grid[x + 2, z - 2].GetComponent<Renderer>().material = onSelectMaterial;
                 Grid[x + 2, z - 2].GetComponent<SlotScript>().SetSelection(true);
                 IsAttackCombo = true;
                 CanAttack = true;
             }
-            if (x - 2 >= 0 && x - 2 < Mathf.Sqrt(Grid.Length) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x - 2) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
-                CurSelected.Add(new SelectedItems(Grid[x - 2, z - 2], Grid[x - 2, z - 2].GetComponent<Renderer>().material));
+                CurSelectedCells.Add(new SelectedItems(Grid[x - 2, z - 2], Grid[x - 2, z - 2].GetComponent<Renderer>().material));
                 Grid[x - 2, z - 2].GetComponent<Renderer>().material = onSelectMaterial;
                 Grid[x - 2, z - 2].GetComponent<SlotScript>().SetSelection(true);
                 IsAttackCombo = true;
                 CanAttack = true;
             }
         }
+        if (CanAttack)
+        {
+            CanSelectAnother = false;
+            ClearSelection(0, MovesCount);
+            return true;
+        } else return false;
 
-        if (CanAttack) ClearSelection(0, MovesCount);
+    }
+    public void MoveSelectedStone(int endX, int endZ)
+    {
+        Vector2Int startV = WSH.GetSelectedStone();
+        
+        WSH.MoveStone(endX, endZ);
+
+        DestroyEnemyStonesOnTheWay(startV.x, startV.y, endX, endZ);
+        
+        SetOcupied(endX, endZ, Color.White);
+        
+        ClearSelection();
+
+        if (IsAttackCombo)
+        {
+            Vector2Int temp = WSH.GetSelectedStone();
+            CanSelectAnother = false;
+            SelectCellsToAttack(temp.x, temp.y);
+        }
+        if (IsAttackCombo == false) CanSelectAnother = true;
+
+        if (CurSelectedCells.Count <= 0)
+        {
+            EAI.OpponentMove();
+
+            WSH.FindTarget();
+        }
+    }
+    private void DestroyEnemyStonesOnTheWay(int startX, int startZ, int endX, int endZ)
+    {
+        if (startX < endX && startZ < endZ)
+        {
+            for (; startX < endX; startX++, startZ++)
+            {
+                if (Grid[startX, startZ].GetComponent<SlotScript>().IsOcupied())
+                {
+                    EAI.KillStones(startX, startZ);
+                }
+            }
+            return;
+        }
+        if (startX > endX && startZ < endZ)
+        {
+            for (; startX > endX; startX--, startZ++)
+            {
+                if (Grid[startX, startZ].GetComponent<SlotScript>().IsOcupied())
+                {
+                    EAI.KillStones(startX, startZ);
+                }
+            }
+            return;
+        }
+        if (startX < endX && startZ > endZ)
+        {
+            for (; startX < endX; startX++, startZ--)
+            {
+                if (Grid[startX, startZ].GetComponent<SlotScript>().IsOcupied())
+                {
+                    EAI.KillStones(startX, startZ);
+                }
+            }
+            return;
+        }
+        if (startX > endX && startZ > endZ)
+        {
+            for (; startX > endX; startX--, startZ--)
+            {
+                if (Grid[startX, startZ].GetComponent<SlotScript>().IsOcupied())
+                {
+                    EAI.KillStones(startX, startZ);
+                }
+            }
+            return;
+        }
+    }
+    private bool IsCellExist(int x, int z)
+    {
+        if (IsXExist(x) && IsZExist(z))
+            return true;
+        else
+            return false;
+    }
+    private bool IsXExist(int x)
+    {
+        if (x >= 0 && x < BoardLength)
+            return true;
+        else
+            return false;
+    }
+    private bool IsZExist(int z)
+    {
+        if (z >= 0 && z < BoardLength)
+            return true;
+        else
+            return false;
     }
     public void ClearSelection()
     {
-        if (CurSelected.Count > 0)
+        if (CurSelectedCells.Count > 0)
         {
-            for (int i = 0; i < CurSelected.Count; i++)
+            for (int i = 0; i < CurSelectedCells.Count; i++)
             {
-                if (CurSelected[i].obj) CurSelected[i].obj.GetComponent<Renderer>().material = CurSelected[i].objMaterial;
-                if (CurSelected[i].obj != selectedStone) CurSelected[i].obj.GetComponent<SlotScript>().SetSelection(false);
+                if (CurSelectedCells[i].obj) CurSelectedCells[i].obj.GetComponent<Renderer>().material = CurSelectedCells[i].objMaterial;
+                if (CurSelectedCells[i].obj != selectedStone) CurSelectedCells[i].obj.GetComponent<SlotScript>().SetSelection(false);
             }
         }
-        CurSelected.Clear();
+        CurSelectedCells.Clear();
     }
     public void ClearSelection(int start, int end)
     {
-        if (CurSelected.Count > 0)
+        if (CurSelectedCells.Count > 0)
         {
             for (int i = start; i < end; i++)
             {
-                CurSelected[i].obj.GetComponent<Renderer>().material = CurSelected[i].objMaterial;
-                if (CurSelected[i].obj != selectedStone) CurSelected[i].obj.GetComponent<SlotScript>().SetSelection(false);
+                CurSelectedCells[i].obj.GetComponent<Renderer>().material = CurSelectedCells[i].objMaterial;
+                if (CurSelectedCells[i].obj != selectedStone) CurSelectedCells[i].obj.GetComponent<SlotScript>().SetSelection(false);
             }
         }
-        CurSelected.RemoveRange(start, end);
-    }
-    public void MoveSelectedStones(int x, int z)
-    {
-        int tempX = (int)selectedStone.transform.position.x;
-        int tempZ = (int)selectedStone.transform.position.z;
-        SetUnOcupied((int)selectedStone.transform.position.x, (int)selectedStone.transform.position.z);
-        selectedStone.transform.position = new Vector3(x, 0.2f, z);
-        if (tempZ < z)
-        {
-            if (tempX < x)
-            {
-                for (; tempX < x; tempX++, tempZ++)
-                {
-                    if (Grid[tempX, tempZ].GetComponent<SlotScript>().IsOcupied())
-                    {
-                        EnemyAIobj.GetComponent<EnemyAI>().KillStones(tempX, tempZ);
-                        SetUnOcupied(tempX, tempZ);
-                        SelectionToAttack(x, z);
-                    }
-                }
-            }
-            else if (tempX > x)
-            {
-                for (; tempX > x; tempX--, tempZ++)
-                {
-                    if (Grid[tempX, tempZ].GetComponent<SlotScript>().IsOcupied())
-                    {
-                        EnemyAIobj.GetComponent<EnemyAI>().KillStones(tempX, tempZ);
-                        SetUnOcupied(tempX, tempZ);
-                        SelectionToAttack(x, z);
-                    }
-                }
-            }
-        }
-        else
-        {
-            if (tempX < x)
-            {
-                for (; tempX < x; tempX++, tempZ--)
-                {
-                    if (Grid[tempX, tempZ].GetComponent<SlotScript>().IsOcupied())
-                    {
-                        EnemyAIobj.GetComponent<EnemyAI>().KillStones(tempX, tempZ);
-                        SetUnOcupied(tempX, tempZ);
-                        SelectionToAttack(x, z);
-                    }
-                }
-            }
-            else if (tempX > x)
-            {
-                for (; tempX > x; tempX--, tempZ--)
-                {
-                    if (Grid[tempX, tempZ].GetComponent<SlotScript>().IsOcupied())
-                    {
-                        EnemyAIobj.GetComponent<EnemyAI>().KillStones(tempX, tempZ);
-                        SetUnOcupied(tempX, tempZ);
-                        SelectionToAttack(x, z);
-                    }
-                }
-            }
-        }
-        SetOcupied((int)selectedStone.transform.position.x, (int)selectedStone.transform.position.z, Color.White);
-        
-        if (!CanAttack)
-        {
-            EnemyAIobj.GetComponent<EnemyAI>().OpponentMove();
-            IsAttackCombo = false;
-        }
+        CurSelectedCells.RemoveRange(start, end);
     }
     public void SetOcupied(int x, int z, Color color)
     {
@@ -219,44 +255,34 @@ public class BoardScript : MonoBehaviour
     {
         Grid[x, z].GetComponent<SlotScript>().SetOcupied(false, Color.Empty);
     }
-    public bool OnSelectEnemy(int x, int z, GameObject selectedObj, int type)
+    public bool CanSelect()
     {
-        ClearSelection();
-        
-        CurSelected.Add(new SelectedItems(selectedObj, selectedObj.GetComponent<Renderer>().material));
-        selectedStone = selectedObj;
-        selectedObj.GetComponent<Renderer>().material = onSelectMaterial;
-
-
-        if (z - 1 >= 0 && z - 1 < Mathf.Sqrt(Grid.Length))
+        return CanSelectAnother;
+    }
+    //ENEMY
+    public bool EnemyMove(int x, int z, GameObject selectedObj, int type)
+    {
+        if (IsZExist(z - 1))
         {
-            if (type == 1 && x + 1 >= 0 && x + 1 < Mathf.Sqrt(Grid.Length))
+            if (type == 1 && IsXExist(x + 1))
             {
                 if (!Grid[x + 1, z - 1].GetComponent<SlotScript>().IsOcupied())
                 {
-                    CurSelected.Add(new SelectedItems(Grid[x + 1, z - 1], Grid[x + 1, z - 1].GetComponent<Renderer>().material));
-                    Grid[x + 1, z - 1].GetComponent<Renderer>().material = onSelectMaterial;
-                    Grid[x + 1, z - 1].GetComponent<SlotScript>().SetSelection(true);
                     SetUnOcupied((int)selectedObj.transform.position.x, (int)selectedObj.transform.position.z);
                     selectedObj.transform.position = new Vector3(x + 1, 0.2f, z - 1);
                     SetOcupied((int)selectedObj.transform.position.x, (int)selectedObj.transform.position.z, Color.Black);
                     
-                    ClearSelection();
                     return true;
                 }
             }
-            if (type == 2 && x - 1 >= 0 && x - 1 < Mathf.Sqrt(Grid.Length))
+            if (type == 2 && IsXExist(x - 1))
             {
                 if (!Grid[x - 1, z - 1].GetComponent<SlotScript>().IsOcupied())
                 {
-                    CurSelected.Add(new SelectedItems(Grid[x - 1, z - 1], Grid[x - 1, z - 1].GetComponent<Renderer>().material));
-                    Grid[x - 1, z - 1].GetComponent<Renderer>().material = onSelectMaterial;
-                    Grid[x - 1, z - 1].GetComponent<SlotScript>().SetSelection(true);
                     SetUnOcupied((int)selectedObj.transform.position.x, (int)selectedObj.transform.position.z);
                     selectedObj.transform.position = new Vector3(x - 1, 0.2f, z - 1);
                     SetOcupied((int)selectedObj.transform.position.x, (int)selectedObj.transform.position.z, Color.Black);
                     
-                    ClearSelection();
                     return true;
                 }
             }
@@ -268,32 +294,32 @@ public class BoardScript : MonoBehaviour
         int x = (int)enemyStone.transform.position.x;
         int z = (int)enemyStone.transform.position.z;
 
-        if (z + 2 >= 0 && z + 2 < Mathf.Sqrt(Grid.Length))
+        if (IsZExist(z + 2))
         {
-            if (x + 2 >= 0 && x + 2 < Mathf.Sqrt(Grid.Length) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x + 2) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
-                EnemyAttack(x, z, 1, enemyStone);
+                EnemyAttack(x, z, enemyStone, 1);
                 Debug.Log("TRUE");
                 return true;
             }
-            if (x - 2 >= 0 && x - 2 < Mathf.Sqrt(Grid.Length) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x - 2) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
-                EnemyAttack(x, z, 2, enemyStone);
+                EnemyAttack(x, z, enemyStone, 2);
                 Debug.Log("TRUE");
                 return true;
             }
         }
-        if (z - 2 >= 0 && z - 2 < Mathf.Sqrt(Grid.Length))
+        if (IsZExist(z - 2))
         {
-            if (x + 2 >= 0 && x + 2 < Mathf.Sqrt(Grid.Length) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x + 2) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
-                EnemyAttack(x, z, 3, enemyStone);
+                EnemyAttack(x, z, enemyStone, 3);
                 Debug.Log("TRUE");
                 return true;
             }
-            if (x - 2 >= 0 && x - 2 < Mathf.Sqrt(Grid.Length) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x - 2) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
-                EnemyAttack(x, z, 4, enemyStone);
+                EnemyAttack(x, z, enemyStone, 4);
                 Debug.Log("TRUE");
                 return true;
             }
@@ -301,7 +327,7 @@ public class BoardScript : MonoBehaviour
         Debug.Log("FALSE");
         return false;
     }
-    private void EnemyAttack(int x, int z, int type, GameObject enemyStone)
+    private void EnemyAttack(int x, int z, GameObject enemyStone, int type)
     {
         int tempX = (int)enemyStone.transform.position.x;
         int tempZ = (int)enemyStone.transform.position.z;
@@ -332,9 +358,5 @@ public class BoardScript : MonoBehaviour
             whiteStonesObj.GetComponent<WhiteStonesHandle>().FindAndDelete(tempX - 1, tempZ - 1);
             SetOcupied(tempX - 2, tempZ - 2, Color.Black);
         }
-    }
-    public bool IsCombo()
-    {
-        return IsAttackCombo;
     }
 }

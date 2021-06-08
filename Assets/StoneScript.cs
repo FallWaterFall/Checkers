@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class StoneScript : MonoBehaviour
 {
-    private BoardScript BS;
-    [SerializeField] private Material onSelectMaterial;
+    private WhiteStonesHandle WSH;
     private Material commonMaterial;
     private void Start()
     {
         commonMaterial = this.GetComponent<Renderer>().material;
-        GameObject obj = GameObject.Find("Board");
-        BS = obj.GetComponent<BoardScript>();
-        BS.SetOcupied((int)this.gameObject.transform.position.x, (int)this.gameObject.transform.position.z, Color.White);
+        WSH = this.transform.GetComponentInParent<WhiteStonesHandle>();
     }
     private void OnMouseDown()
     {
-        if (!BS.IsCombo())
-            BS.OnSelect((int)this.transform.position.x, (int)this.transform.position.z, this.gameObject);
+        WSH.SelectStone((int)this.transform.position.x, (int)this.transform.position.z, this.gameObject);
     }
 }

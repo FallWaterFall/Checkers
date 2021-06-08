@@ -343,49 +343,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ocupiedColor: 0
---- !u!1 &71731803
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 71731805}
-  - component: {fileID: 71731804}
-  m_Layer: 0
-  m_Name: ClickControll
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &71731804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71731803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f777e6190ecf1429e9fdffd8fbbf3a82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &71731805
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71731803}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &84273737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,7 +1235,6 @@ GameObject:
   - component: {fileID: 240524598}
   - component: {fileID: 240524597}
   - component: {fileID: 240524596}
-  - component: {fileID: 240524599}
   m_Layer: 0
   m_Name: WhiteStone7
   m_TagString: Untagged
@@ -1364,18 +1320,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240524594}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &240524599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240524594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &247724033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,7 +1332,6 @@ GameObject:
   - component: {fileID: 247724037}
   - component: {fileID: 247724036}
   - component: {fileID: 247724035}
-  - component: {fileID: 247724038}
   m_Layer: 0
   m_Name: WhiteStone2
   m_TagString: Untagged
@@ -1474,18 +1417,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247724033}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &247724038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247724033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &318347148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2844,7 +2775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &623026276
 GameObject:
   m_ObjectHideFlags: 0
@@ -3598,7 +3528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &746671605
 GameObject:
   m_ObjectHideFlags: 0
@@ -3861,7 +3790,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &772363796
 GameObject:
@@ -4974,7 +4903,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &1129226156
 GameObject:
   m_ObjectHideFlags: 0
@@ -4987,7 +4915,6 @@ GameObject:
   - component: {fileID: 1129226160}
   - component: {fileID: 1129226159}
   - component: {fileID: 1129226158}
-  - component: {fileID: 1129226161}
   m_Layer: 0
   m_Name: WhiteStone3
   m_TagString: Untagged
@@ -5073,18 +5000,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129226156}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1129226161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1129226156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1145668239
 GameObject:
   m_ObjectHideFlags: 0
@@ -5233,7 +5148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &1205031479
 GameObject:
   m_ObjectHideFlags: 0
@@ -5509,6 +5423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c7e185fe3774d18a90e71c7aaec1b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &1258311342
 GameObject:
   m_ObjectHideFlags: 0
@@ -5521,7 +5436,6 @@ GameObject:
   - component: {fileID: 1258311346}
   - component: {fileID: 1258311345}
   - component: {fileID: 1258311344}
-  - component: {fileID: 1258311347}
   m_Layer: 0
   m_Name: WhiteStone8
   m_TagString: Untagged
@@ -5607,18 +5521,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258311342}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1258311347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258311342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1294152288
 GameObject:
   m_ObjectHideFlags: 0
@@ -6317,7 +6219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &1377976492
 GameObject:
   m_ObjectHideFlags: 0
@@ -6482,7 +6383,6 @@ GameObject:
   - component: {fileID: 1428498407}
   - component: {fileID: 1428498406}
   - component: {fileID: 1428498405}
-  - component: {fileID: 1428498408}
   m_Layer: 0
   m_Name: WhiteStone6
   m_TagString: Untagged
@@ -6568,18 +6468,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428498403}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1428498408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428498403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1435078610
 GameObject:
   m_ObjectHideFlags: 0
@@ -6922,7 +6810,6 @@ GameObject:
   - component: {fileID: 1454519473}
   - component: {fileID: 1454519472}
   - component: {fileID: 1454519471}
-  - component: {fileID: 1454519474}
   m_Layer: 0
   m_Name: WhiteStone11
   m_TagString: Untagged
@@ -7008,18 +6895,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454519469}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1454519474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1454519469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1460986831
 GameObject:
   m_ObjectHideFlags: 0
@@ -7130,7 +7005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &1514538775
 GameObject:
   m_ObjectHideFlags: 0
@@ -7253,7 +7127,6 @@ GameObject:
   - component: {fileID: 1532229085}
   - component: {fileID: 1532229084}
   - component: {fileID: 1532229083}
-  - component: {fileID: 1532229086}
   m_Layer: 0
   m_Name: WhiteStone9
   m_TagString: Untagged
@@ -7339,18 +7212,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532229081}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1532229086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532229081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1550077779
 GameObject:
   m_ObjectHideFlags: 0
@@ -7731,7 +7592,6 @@ GameObject:
   - component: {fileID: 1599853784}
   - component: {fileID: 1599853783}
   - component: {fileID: 1599853782}
-  - component: {fileID: 1599853785}
   m_Layer: 0
   m_Name: WhiteStone5
   m_TagString: Untagged
@@ -7817,18 +7677,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599853780}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1599853785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599853780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1622741257
 GameObject:
   m_ObjectHideFlags: 0
@@ -8049,7 +7897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &1672817360
 GameObject:
   m_ObjectHideFlags: 0
@@ -8380,7 +8227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &1740949758
 GameObject:
   m_ObjectHideFlags: 0
@@ -8833,7 +8679,6 @@ GameObject:
   - component: {fileID: 1809129624}
   - component: {fileID: 1809129623}
   - component: {fileID: 1809129622}
-  - component: {fileID: 1809129625}
   m_Layer: 0
   m_Name: WhiteStone1
   m_TagString: Untagged
@@ -8919,18 +8764,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809129620}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1809129625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809129620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1809966217
 GameObject:
   m_ObjectHideFlags: 0
@@ -9117,7 +8950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &1812182639
 GameObject:
   m_ObjectHideFlags: 0
@@ -9448,7 +9280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &1925806982
 GameObject:
   m_ObjectHideFlags: 0
@@ -9461,7 +9292,6 @@ GameObject:
   - component: {fileID: 1925806986}
   - component: {fileID: 1925806985}
   - component: {fileID: 1925806984}
-  - component: {fileID: 1925806987}
   m_Layer: 0
   m_Name: WhiteStone10
   m_TagString: Untagged
@@ -9547,18 +9377,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925806982}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1925806987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925806982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1947001457
 GameObject:
   m_ObjectHideFlags: 0
@@ -9571,7 +9389,6 @@ GameObject:
   - component: {fileID: 1947001461}
   - component: {fileID: 1947001460}
   - component: {fileID: 1947001459}
-  - component: {fileID: 1947001462}
   m_Layer: 0
   m_Name: WhiteStone4
   m_TagString: Untagged
@@ -9657,18 +9474,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947001457}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1947001462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947001457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1960429662
 GameObject:
   m_ObjectHideFlags: 0
@@ -9779,7 +9584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!1 &1974027013
 GameObject:
   m_ObjectHideFlags: 0
@@ -10248,7 +10052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233187fb21bfe4f6c8af08d3e6bfe5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
 --- !u!136 &2072743563
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10325,7 +10128,6 @@ GameObject:
   - component: {fileID: 2079567746}
   - component: {fileID: 2079567745}
   - component: {fileID: 2079567744}
-  - component: {fileID: 2079567747}
   m_Layer: 0
   m_Name: WhiteStone12
   m_TagString: Untagged
@@ -10411,18 +10213,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079567742}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2079567747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079567742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab65a51fbefb4dc1a61d011fa130452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2084210874
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
         for (int i = 0; i < 12; i++)
         {
             enemyStones.Add(EnemyStonesObj.transform.GetChild(i).gameObject);
+            BS.SetOcupied((int)enemyStones[i].transform.position.x, (int)enemyStones[i].transform.position.z, Color.Black);
         }
     }
     public void OpponentMove()
@@ -25,7 +26,6 @@ public class EnemyAI : MonoBehaviour
         {
             if (BS.CheckEnemyAttack(enemyStones[i]) == true)
             {
-                Debug.Log("CHECKENEMY");
                 isMoveMake = true;
                 break;
             }
@@ -33,11 +33,11 @@ public class EnemyAI : MonoBehaviour
 
         if (!isMoveMake)
         {
-            for (int i = 0; i < enemyStones.Count; i++)
+            for (int i = 0; i < 100; i++)
             {
                 int MoveID = Random.Range(1, 3);
                 int StonesID = Random.Range(0, enemyStones.Count);
-                bool isFind = BS.OnSelectEnemy((int)enemyStones[StonesID].transform.position.x, (int)enemyStones[StonesID].transform.position.z, enemyStones[StonesID], MoveID);
+                bool isFind = BS.EnemyMove((int)enemyStones[StonesID].transform.position.x, (int)enemyStones[StonesID].transform.position.z, enemyStones[StonesID], MoveID);
                 if (isFind) break;
             }
         }
@@ -53,6 +53,7 @@ public class EnemyAI : MonoBehaviour
                 GameObject obj = enemyStones[i];
                 enemyStones.Remove(obj);
                 Destroy(obj);
+                BS.SetUnOcupied(x, z);
 
                 if (enemyStones.Count == 0)
                 {
