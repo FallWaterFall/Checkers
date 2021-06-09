@@ -3025,7 +3025,7 @@ Transform:
   m_GameObject: {fileID: 573943078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 2}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1252213553}
   m_RootOrder: 8
@@ -3133,7 +3133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623026276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: 1}
+  m_LocalPosition: {x: 6, y: 0, z: 1.03}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 833469845}
@@ -3778,7 +3778,7 @@ Transform:
   m_GameObject: {fileID: 737768533}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4, y: 0.2, z: 2}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1252213553}
   m_RootOrder: 10
@@ -5859,6 +5859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
+  KingObj: {fileID: 437157692587578972, guid: 93cc4fb1395ca4a9da014badb9e221b6, type: 3}
 --- !u!1 &1258311342
 GameObject:
   m_ObjectHideFlags: 0
@@ -6637,7 +6638,7 @@ Transform:
   m_GameObject: {fileID: 1361289001}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6, y: 0.2, z: 2}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1252213553}
   m_RootOrder: 11
@@ -8315,7 +8316,7 @@ Transform:
   m_GameObject: {fileID: 1642628416}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: 0.2, z: 2}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1252213553}
   m_RootOrder: 9

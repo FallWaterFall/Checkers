@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - BoardScript
     - EnemyAI
+    - KingStoneScript
     - MenuScript
     - SlotScript
     - StoneScript
@@ -88,6 +89,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 4550}
     - Class: 114
       Script: {instanceID: 6312}
+    - Class: 114
+      Script: {instanceID: 22072}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -127,7 +130,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -150,8 +161,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3456}
     - Class: 114
-      Script: {instanceID: 3678}
-    - Class: 114
       Script: {instanceID: 3812}
     - Class: 114
       Script: {instanceID: 3958}
@@ -159,6 +168,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 5696}
     - Class: 114
       Script: {instanceID: 6110}
+    - Class: 114
+      Script: {instanceID: 22072}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -594,7 +605,7 @@ ScriptsOnlyBuild:
     className: UnityOnScrollMessageListener
   - hash:
       serializedVersion: 2
-      Hash: feb6ee4d100f9505e5736c7262a4682c
+      Hash: 1da40f549dd2b3d75da9be2c867cb411
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WhiteStonesHandle
@@ -988,6 +999,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: KingStoneScript
   platform: 2
   scenePathNames:
   - Assets/Scenes/MenuScene.unity

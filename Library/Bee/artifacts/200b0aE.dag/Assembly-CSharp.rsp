@@ -319,6 +319,7 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/BoardScript.cs"
 "Assets/EnemyAI.cs"
+"Assets/KingStoneScript.cs"
 "Assets/MenuScript.cs"
 "Assets/SlotScript.cs"
 "Assets/StoneScript.cs"

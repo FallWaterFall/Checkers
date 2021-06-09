@@ -84,6 +84,61 @@ public class BoardScript : MonoBehaviour
         }
         SelectCellsToAttack(x, z);
     }
+    public void SelectCellsForKing(int x, int z)
+    {
+        ClearSelection();
+
+        bool stopLU = false, stopRU = false, stopLD = false, stopRD = false;
+        int stopcountL, stopcountR;
+
+        for (int leftX = x, rightX = x, tempZ = z; tempZ >= 0; tempZ--, leftX--, rightX++)
+        {
+            stopcountL = 0;
+            stopcountR = 0;
+
+            if (IsXExist(leftX) && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied() && !stopLU)
+            {
+                stopcountL = 0;
+                CurSelectedCells.Add(new SelectedItems(Grid[leftX, tempZ], Grid[leftX, tempZ].GetComponent<Renderer>().material));
+                Grid[leftX, tempZ].GetComponent<Renderer>().material = onSelectMaterial;
+                Grid[leftX, tempZ].GetComponent<SlotScript>().SetSelection(true);
+            }
+            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied()) stopcountL++;
+            if (stopcountL == 2) stopLU = true;
+
+            if (IsXExist(rightX) && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied() && !stopRU)
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[rightX, tempZ], Grid[rightX, tempZ].GetComponent<Renderer>().material));
+                Grid[rightX, tempZ].GetComponent<Renderer>().material = onSelectMaterial;
+                Grid[rightX, tempZ].GetComponent<SlotScript>().SetSelection(true);
+            }
+            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied()) stopcountR++;
+            if (stopcountR == 2) stopRU = true;
+        }
+        for (int leftX = x, rightX = x, tempZ = z; tempZ < 8; tempZ++, leftX--, rightX++)
+        {
+            stopcountL = 0;
+            stopcountR = 0;
+
+            if (IsXExist(leftX) && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied() && !stopLD)
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[leftX, tempZ], Grid[leftX, tempZ].GetComponent<Renderer>().material));
+                Grid[leftX, tempZ].GetComponent<Renderer>().material = onSelectMaterial;
+                Grid[leftX, tempZ].GetComponent<SlotScript>().SetSelection(true);
+            }
+            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied()) stopcountL++;
+            if (stopcountL == 2) stopLD = true;
+
+            if (IsXExist(rightX) && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied() && !stopRD)
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[rightX, tempZ], Grid[rightX, tempZ].GetComponent<Renderer>().material));
+                Grid[rightX, tempZ].GetComponent<Renderer>().material = onSelectMaterial;
+                Grid[rightX, tempZ].GetComponent<SlotScript>().SetSelection(true);
+            }
+            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied()) stopcountR++;
+            if (stopcountR == 2) stopRD = true;
+        }
+    }
     public bool SelectCellsToAttack(int x, int z)
     {
         CanAttack = false;

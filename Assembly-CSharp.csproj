@@ -42,6 +42,7 @@
      <Compile Include="Assets\WhiteStonesHandle.cs" />
      <Compile Include="Assets\SlotScript.cs" />
      <Compile Include="Assets\BoardScript.cs" />
+     <Compile Include="Assets\KingStoneScript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

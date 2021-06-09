@@ -5,6 +5,7 @@ using UnityEngine;
 public class WhiteStonesHandle : MonoBehaviour
 {
     [SerializeField] private Material onSelectMaterial;
+    [SerializeField] private GameObject KingObj;
     private BoardScript BS;
     private List<GameObject> whiteStones = new List<GameObject>();
     private SelectedItems SelectedStone;
@@ -40,6 +41,17 @@ public class WhiteStonesHandle : MonoBehaviour
 
         BS.SelectCells(x, z);
     }
+    public void SelectKingStone(int x, int z, GameObject obj)
+    {
+        if (!BS.CanSelect()) return;
+        if (SelectedStone.obj != null) SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
+
+        Renderer objRend = obj.GetComponent<Renderer>();
+        SelectedStone = new SelectedItems(obj, objRend.material);
+        objRend.material = onSelectMaterial;
+        Debug.Log("SelectCellsForKing");
+        BS.SelectCellsForKing(x, z);
+    }
     public void MoveStone(int endX, int endZ)
     {
         BS.SetUnOcupied((int)SelectedStone.obj.transform.position.x, (int)SelectedStone.obj.transform.position.z);
@@ -47,6 +59,24 @@ public class WhiteStonesHandle : MonoBehaviour
         SelectedStone.obj.transform.position = new Vector3(endX, 0.2f, endZ);
         SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
 
+        if (endZ == 7)
+        {
+            ChangeStoneOnKing();
+        }
+    }
+    private void ChangeStoneOnKing()
+    {
+        int i;
+        var king = Instantiate(KingObj, SelectedStone.obj.transform.position, Quaternion.Euler(-90, 0, 0));
+        king.transform.SetParent(this.transform);
+
+        for (i = 0; i < whiteStones.Count; i++)
+            if (whiteStones[i] == SelectedStone.obj)
+                break;
+        
+        Destroy(whiteStones[i]);
+        whiteStones[i] = king;
+        SelectedStone.obj = king;
     }
     public void FindTarget()
     {
