@@ -5,41 +5,42 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637585178950000000
-    m_Hash: 4290753299
+      ticks: 637589541630000000
+    m_Hash: 2388083055
   m_LockFileStatus:
     m_FilePath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637585179000000000
-    m_Hash: 3855210041
+      ticks: 637589541740000000
+    m_Hash: 2668993278
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Packages
-m_EditorVersion: 2021.1.7f1 (d91830b65d9b)
+m_EditorVersion: 2021.1.11f1 (4d8c25f7477e)
 m_ResolvedPackages:
-- packageId: com.unity.collab-proxy@1.3.9
+- packageId: com.unity.collab-proxy@1.5.7
   testable: 0
   isDirectDependency: 1
-  version: 1.3.9
+  version: 1.5.7
   source: 1
-  resolvedPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.collab-proxy@1.3.9
+  resolvedPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.collab-proxy@1.5.7
   assetPath: Packages/com.unity.collab-proxy
   name: com.unity.collab-proxy
-  displayName: Unity Collaborate
+  displayName: Version Control
   author:
     name: 
     email: 
     url: 
   category: Editor
   type: 
-  description: Collaborate with your teammates with the official version control
-    system for Unity. Collaborate is a simple way for teams to save, share, and sync
-    your Unity project.
+  description: The Version Control package gives you the ability to use either Collaborate
+    or Plastic SCM for Unity (beta) in the Unity editor. To use Plastic SCM for Unity
+    (beta), a Plastic SCM subscription is required. Learn more about how you can
+    get started for free by visiting plasticscm.com.
   status: 4
   errors: []
   versions:
@@ -73,7 +74,6 @@ m_ResolvedPackages:
     - 2.1.0-preview.5
     - 2.1.0-preview.6
     compatible:
-    - 1.3.9
     - 1.5.7
     - 2.0.0-preview.6
     - 2.0.0-preview.8
@@ -85,9 +85,13 @@ m_ResolvedPackages:
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
-    verified: 1.3.9
-  dependencies: []
-  resolvedDependencies: []
+    verified: 1.5.7
+  dependencies:
+  - name: com.unity.nuget.newtonsoft-json
+    version: 2.0.0
+  resolvedDependencies:
+  - name: com.unity.nuget.newtonsoft-json
+    version: 2.0.0
   keywords:
   - vsc
   - version
@@ -111,23 +115,23 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637314349270000000
+  datePublishedTicks: 637551413290000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-    revision: fa825106f349f996acff22f718845eab46ca2d7c
+    revision: f079d307344f568804d3ea6d781013135e614e45
     path: 
   unityLifecycle:
-    version: 1.3.9
+    version: 1.5.7
     nextVersion: 
-- packageId: com.unity.ide.rider@3.0.6
+- packageId: com.unity.ide.rider@3.0.7
   testable: 0
   isDirectDependency: 1
-  version: 3.0.6
+  version: 3.0.7
   source: 1
-  resolvedPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.ide.rider@3.0.6
+  resolvedPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.ide.rider@3.0.7
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -168,9 +172,10 @@ m_ResolvedPackages:
     - 3.0.4
     - 3.0.5
     - 3.0.6
+    - 3.0.7
     compatible:
-    - 3.0.6
-    verified: 3.0.6
+    - 3.0.7
+    verified: 3.0.7
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -190,23 +195,23 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637545389350000000
+  datePublishedTicks: 637572251600000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: 0be4afe0ac726df5939a6ce50f8b7575968c5d6f
+    revision: 3007c42a679bbe2c082c276e8d79279110964553
     path: 
   unityLifecycle:
-    version: 3.0.6
+    version: 3.0.7
     nextVersion: 
-- packageId: com.unity.ide.visualstudio@2.0.7
+- packageId: com.unity.ide.visualstudio@2.0.8
   testable: 0
   isDirectDependency: 1
-  version: 2.0.7
+  version: 2.0.8
   source: 1
-  resolvedPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.ide.visualstudio@2.0.7
+  resolvedPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.ide.visualstudio@2.0.8
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -236,10 +241,11 @@ m_ResolvedPackages:
     - 2.0.5
     - 2.0.7
     - 2.0.8
+    - 2.0.9
     compatible:
-    - 2.0.7
     - 2.0.8
-    verified: 2.0.8
+    - 2.0.9
+    verified: 2.0.9
   dependencies:
   - name: com.unity.test-framework
     version: 1.1.9
@@ -265,16 +271,16 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637486638490000000
+  datePublishedTicks: 637562620210000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
-    revision: dec282022c7a95fada560c36f53da9dd155a142c
+    revision: 5cdf5d932e6ecbbd83bbe6a40eec2a94b4979501
     path: 
   unityLifecycle:
-    version: 2.0.7
+    version: 2.0.8
     nextVersion: 
 - packageId: com.unity.ide.vscode@1.2.3
   testable: 0
@@ -386,9 +392,11 @@ m_ResolvedPackages:
     - 1.1.20
     - 1.1.22
     - 1.1.24
+    - 1.1.26
     compatible:
     - 1.1.24
-    verified: 1.1.24
+    - 1.1.26
+    verified: 1.1.26
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -429,12 +437,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.1.24
     nextVersion: 
-- packageId: com.unity.textmeshpro@3.0.4
+- packageId: com.unity.textmeshpro@3.0.6
   testable: 0
   isDirectDependency: 1
-  version: 3.0.4
+  version: 3.0.6
   source: 1
-  resolvedPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.textmeshpro@3.0.4
+  resolvedPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.textmeshpro@3.0.6
   assetPath: Packages/com.unity.textmeshpro
   name: com.unity.textmeshpro
   displayName: TextMeshPro
@@ -545,8 +553,6 @@ m_ResolvedPackages:
     - 3.0.5
     - 3.0.6
     compatible:
-    - 3.0.4
-    - 3.0.5
     - 3.0.6
     verified: 3.0.6
   dependencies:
@@ -577,23 +583,23 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637492944820000000
+  datePublishedTicks: 637547111200000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.textmeshpro.git
-    revision: e2f8dffb26de9a130d5b2140d83891d9a7825330
+    revision: 01e57e3b7de18af9dfe9baaa0a0ff5cc4765c899
     path: 
   unityLifecycle:
-    version: 3.0.4
+    version: 3.0.6
     nextVersion: 
-- packageId: com.unity.timeline@1.5.4
+- packageId: com.unity.timeline@1.5.5
   testable: 0
   isDirectDependency: 1
-  version: 1.5.4
+  version: 1.5.5
   source: 1
-  resolvedPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.timeline@1.5.4
+  resolvedPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.timeline@1.5.5
   assetPath: Packages/com.unity.timeline
   name: com.unity.timeline
   displayName: Timeline
@@ -672,7 +678,6 @@ m_ResolvedPackages:
     - 1.6.0-pre.4
     - 1.6.0-pre.5
     compatible:
-    - 1.5.4
     - 1.5.5
     - 1.6.0-pre.1
     - 1.6.0-pre.3
@@ -715,16 +720,16 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637510732040000000
+  datePublishedTicks: 637557616440000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.timeline.git
-    revision: 7fe777cafcad93e7e44db6bd6a18ed5bd55e781a
+    revision: 4bb067f24973c7cfa1e4a453615e43083ce6855d
     path: 
   unityLifecycle:
-    version: 1.5.4
+    version: 1.5.5
     nextVersion: 
 - packageId: com.unity.ugui@1.0.0
   testable: 0
@@ -825,8 +830,10 @@ m_ResolvedPackages:
     - 1.6.0-pre.3
     - 1.6.0
     - 1.6.1
+    - 1.7.1
     compatible:
     - 1.6.1
+    - 1.7.1
     verified: 1.6.1
   dependencies:
   - name: com.unity.ugui
@@ -2783,4 +2790,63 @@ m_ResolvedPackages:
     path: 
   unityLifecycle:
     version: 1.0.6
+    nextVersion: 
+- packageId: com.unity.nuget.newtonsoft-json@2.0.0
+  testable: 0
+  isDirectDependency: 0
+  version: 2.0.0
+  source: 1
+  resolvedPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0
+  assetPath: Packages/com.unity.nuget.newtonsoft-json
+  name: com.unity.nuget.newtonsoft-json
+  displayName: Newtonsoft Json
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: library
+  description: 'Newtonsoft Json for use in Unity projects and Unity packages. Currently
+    synced to version 12.0.2.
+
+
+    This package is used for advanced json serialization
+    and deserialization. Most Unity users will be better suited using the existing
+    json tools built into Unity.
+
+    To avoid assembly clashes, please use this
+    package if you intend to use Newtonsoft Json.'
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 2.0.0
+    compatible:
+    - 2.0.0
+    verified: 2.0.0
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hasRegistry: 1
+  hideInEditor: 1
+  entitlements:
+    isAllowed: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.nuget.newtonsoft-json.git
+    revision: d2fd6ed876261bbd82f59199ad711e7667bf633a
+    path: 
+  unityLifecycle:
+    version: 2.0.0
     nextVersion: 
