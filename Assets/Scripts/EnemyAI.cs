@@ -9,6 +9,9 @@ public class EnemyAI : MonoBehaviour
     private BoardScript BS;
     private List<GameObject> enemyStones = new List<GameObject>();
     [SerializeField] private List<GameObject> enemyKingStones = new List<GameObject>();
+    private GameObject moveAnimObj = null;
+    private float moveAnimDeltaX, moveAnimDeltaZ, moveAnimEndX, moveAnimEndZ;
+    private int moveAnimDirection;
     private void Start()
     {
         GameObject obj = GameObject.Find("Board");
@@ -19,34 +22,35 @@ public class EnemyAI : MonoBehaviour
             BS.SetOcupied((int)enemyStones[i].transform.position.x, (int)enemyStones[i].transform.position.z, Color.Black);
         }
     }
-    public void OpponentMove()
+    private void Update()
     {
-        if (enemyStones.Count + enemyKingStones.Count == 0) return;
+        if (moveAnimObj != null) MoveStoneAnim();
+    }
+    public IEnumerator OpponentMove()
+    {
+        if (enemyStones.Count + enemyKingStones.Count == 0) yield return new WaitForSeconds(0);
         bool isMoveMake = false;
 
         if (enemyKingStones.Count > 0)
         {
             for (int i = 0; i < enemyKingStones.Count; i++)
             {
-                if (BS.CheckEnemyKingAttack(enemyKingStones[i]) == true)
-                {
-                    isMoveMake = true;
-                    Debug.Log("CheckEnemyKingAttack ");
-                }
+                if (BS.CheckEnemyKingAttack(enemyKingStones[i])) isMoveMake = true;
             }
         }
 
-        if (!isMoveMake)
+        if (!isMoveMake && enemyStones.Count > 0)
         {
             for (int i = 0; i < enemyStones.Count; i++)
             {
                 if (BS.CheckEnemyAttack(enemyStones[i]) == true)
                 {
-                    while (BS.CheckEnemyAttack(enemyStones[i]))
+                    yield return new WaitForSeconds(0.5f);
+                    while (BS.CheckEnemyAttack(enemyStones[i]) == true)
                     {
+                        yield return new WaitForSeconds(0.5f);
                         Debug.Log("EnemyCombo");
                     }
-
                     if (enemyStones[i].transform.position.z == 0) ChangeStoneToKing(i);
                     isMoveMake = true;
                     break;
@@ -56,12 +60,13 @@ public class EnemyAI : MonoBehaviour
 
         if (!isMoveMake && enemyStones.Count > 0)
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 200; i++)
             {
                 int MoveID = Random.Range(1, 3);
                 int StonesID = Random.Range(0, enemyStones.Count);
-                bool isFind = BS.EnemyMove((int)enemyStones[StonesID].transform.position.x, (int)enemyStones[StonesID].transform.position.z, enemyStones[StonesID], MoveID);
-                if (isFind)
+                moveAnimObj = enemyStones[StonesID];
+
+                if (BS.EnemyMove((int)enemyStones[StonesID].transform.position.x, (int)enemyStones[StonesID].transform.position.z, MoveID))
                 {
                     if (enemyStones[StonesID].transform.position.z == 0) ChangeStoneToKing(StonesID);
                     isMoveMake = true;
@@ -70,20 +75,68 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        if (!isMoveMake)
+        if (!isMoveMake && enemyKingStones.Count > 0)
         {
             for (int i = 0; i < 20; i++)
             {
                 int StonesID = Random.Range(0, enemyKingStones.Count);
-                Debug.Log("Enemy king must move");
-                bool isFind = BS.MoveEnemyKing((int)enemyKingStones[StonesID].transform.position.x, (int)enemyKingStones[StonesID].transform.position.z, enemyKingStones[StonesID]);
-                if (isFind) break;
+
+                if (BS.MoveEnemyKing((int)enemyKingStones[StonesID].transform.position.x, (int)enemyKingStones[StonesID].transform.position.z, enemyKingStones[StonesID]))
+                {
+                    isMoveMake = true;
+                    break;
+                }
             }
         }
 
-        BS.ClearSelection();
+        if (!isMoveMake)
+        {
+            Debug.Log("Enemy stones can't move");
+            BS.ShowCanvas(true);
+            BS.SetCanSelect(false);
+        }
+    }
+    public void MakeMoveAnim(int endX, int endZ)
+    {
+        BS.SetCanSelect(false);
 
-        if (!isMoveMake) BS.ShowCanvas();
+        moveAnimEndX = endX;
+        moveAnimEndZ = endZ;
+        moveAnimDeltaX = (endX - moveAnimObj.transform.position.x) / 25f;
+        moveAnimDeltaZ = (endZ - moveAnimObj.transform.position.z) / 25f;
+        if (moveAnimObj.transform.position.x < endX) moveAnimDirection = 0;
+        else moveAnimDirection = 1;
+    }
+    public void MakeMoveAnim(int endX, int endZ, GameObject obj)
+    {
+        BS.SetCanSelect(false);
+
+        moveAnimObj = obj;
+        moveAnimEndX = endX;
+        moveAnimEndZ = endZ;
+        moveAnimDeltaX = (endX - moveAnimObj.transform.position.x) / 25f;
+        moveAnimDeltaZ = (endZ - moveAnimObj.transform.position.z) / 25f;
+        if (moveAnimObj.transform.position.x < endX) moveAnimDirection = 0;
+        else moveAnimDirection = 1;
+    }
+    private void MoveStoneAnim()
+    {
+        moveAnimObj.transform.position += new Vector3(moveAnimDeltaX, 0, moveAnimDeltaZ);
+
+        if ((moveAnimObj.transform.position.x >= moveAnimEndX && moveAnimDirection == 0) || (moveAnimObj.transform.position.x <= moveAnimEndX && moveAnimDirection == 1))
+        {
+            moveAnimObj.transform.position = new Vector3(moveAnimEndX, 0.2f , moveAnimEndZ);
+
+            moveAnimDeltaX = 0;
+            moveAnimDeltaZ = 0;
+            moveAnimEndX = 0;
+            moveAnimEndZ = 0;
+            if (moveAnimObj.transform.position.z == 0) ChangeStoneToKing(FindIndexOfObj(moveAnimObj));
+            moveAnimObj = null;
+
+            BS.ClearSelection();
+            BS.SetCanSelect(true);
+        }
     }
     public void KillStones(int x, int z)
     {
@@ -109,8 +162,9 @@ public class EnemyAI : MonoBehaviour
         }
         if (enemyStones.Count + enemyKingStones.Count == 0)
         {
-            BS.ShowCanvas();
-            //this.gameObject.SetActive(false);
+            Debug.Log("Enemy stones < 0");
+            BS.ShowCanvas(true);
+            BS.SetCanSelect(false);
         }
     }
     public void ChangeStoneToKing(int i)
@@ -121,5 +175,13 @@ public class EnemyAI : MonoBehaviour
         Destroy(obj);
         newObj.transform.SetParent(EnemyStonesObj.transform);
         enemyKingStones.Add(newObj);
+    }
+    private int FindIndexOfObj(GameObject obj)
+    {
+        for (int i = 0; i < enemyStones.Count; i++)
+        {
+            if (obj == enemyStones[i]) return i;
+        }
+        return -1;
     }
 }

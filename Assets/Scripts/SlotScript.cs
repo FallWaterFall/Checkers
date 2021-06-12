@@ -38,7 +38,7 @@ public class SlotScript : MonoBehaviour
     {
         if (isSelected)
         {
-            BS.MoveSelectedStone((int)this.transform.position.x, (int)this.transform.position.z);
+            StartCoroutine(BS.MoveSelectedStone((int)this.transform.position.x, (int)this.transform.position.z));
         }
     }
 }

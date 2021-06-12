@@ -9,6 +9,9 @@ public class WhiteStonesHandle : MonoBehaviour
     private BoardScript BS;
     private List<GameObject> whiteStones = new List<GameObject>();
     private SelectedItems SelectedStone;
+    private GameObject moveAnimObj = null;
+    private float moveAnimDeltaX, moveAnimDeltaZ, moveAnimEndX, moveAnimEndZ;
+    private int moveAnimDirection;
     private void Start()
     {
         GameObject obj = GameObject.Find("Board");
@@ -20,6 +23,10 @@ public class WhiteStonesHandle : MonoBehaviour
             
             whiteStones.Add(obj);
         }
+    }
+    public void Update()
+    {
+        if (moveAnimObj != null) MoveStoneAnim();
     }
     public void SelectStone(GameObject obj)
     {
@@ -33,6 +40,7 @@ public class WhiteStonesHandle : MonoBehaviour
     public void SelectStone(int x, int z, GameObject obj)
     {
         if (!BS.CanSelect()) return;
+
         if (SelectedStone.obj != null) SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
 
         Renderer objRend = obj.GetComponent<Renderer>();
@@ -49,19 +57,42 @@ public class WhiteStonesHandle : MonoBehaviour
         Renderer objRend = obj.GetComponent<Renderer>();
         SelectedStone = new SelectedItems(obj, objRend.material);
         objRend.material = onSelectMaterial;
-        Debug.Log("SelectCellsForKing");
         BS.SelectCellsForKing(x, z);
     }
     public void MoveStone(int endX, int endZ)
     {
         BS.SetUnOcupied((int)SelectedStone.obj.transform.position.x, (int)SelectedStone.obj.transform.position.z);
 
-        SelectedStone.obj.transform.position = new Vector3(endX, 0.2f, endZ);
-        SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
+        SelectedStone.obj.transform.position += new Vector3(0, 0.2f, 0);
+        moveAnimObj = SelectedStone.obj;
+        moveAnimEndX = endX;
+        moveAnimEndZ = endZ;
+        moveAnimDeltaX = (endX - SelectedStone.obj.transform.position.x) / 50.0f;
+        moveAnimDeltaZ = (endZ - SelectedStone.obj.transform.position.z) / 50.0f;
 
-        if (endZ == 7)
+        BS.SetCanSelect(false);
+
+        if (SelectedStone.obj.transform.position.x < endX) moveAnimDirection = 0;
+        else moveAnimDirection = 1;
+
+        SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
+    }
+    private void MoveStoneAnim()
+    {
+        moveAnimObj.transform.position += new Vector3(moveAnimDeltaX, 0, moveAnimDeltaZ);
+
+        if ((moveAnimObj.transform.position.x >= moveAnimEndX && moveAnimDirection == 0) || (moveAnimObj.transform.position.x <= moveAnimEndX && moveAnimDirection == 1))
         {
-            ChangeStoneOnKing();
+            moveAnimObj.transform.position = new Vector3(moveAnimEndX, 0.2f , moveAnimEndZ);
+
+            moveAnimDeltaX = 0;
+            moveAnimDeltaZ = 0;
+            moveAnimEndX = 0;
+            moveAnimEndZ = 0;
+            if (moveAnimObj.transform.position.z == 7) ChangeStoneOnKing();
+            moveAnimObj = null;
+            
+            BS.SetCanSelect(false);
         }
     }
     private void ChangeStoneOnKing()
@@ -77,6 +108,7 @@ public class WhiteStonesHandle : MonoBehaviour
         Destroy(whiteStones[i]);
         whiteStones[i] = king;
         SelectedStone.obj = king;
+        moveAnimObj = king;
     }
     public void FindTarget()
     {
@@ -86,6 +118,7 @@ public class WhiteStonesHandle : MonoBehaviour
             if (BS.SelectCellsToAttack((int)whiteStones[i].transform.position.x, (int)whiteStones[i].transform.position.z)) return;
         }
         if (SelectedStone.obj != null) SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
+        SelectedStone.obj = null;
     }
     public void FindAndDelete(int x, int z)
     {
@@ -99,7 +132,7 @@ public class WhiteStonesHandle : MonoBehaviour
                 Destroy(obj);
             }
         }
-        if (whiteStones.Count == 0) BS.ShowCanvas(); 
+        if (whiteStones.Count == 0) BS.ShowCanvas(true); 
     }
     public Vector2Int GetSelectedStone()
     {

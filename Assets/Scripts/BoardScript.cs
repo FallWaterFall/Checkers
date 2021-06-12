@@ -35,8 +35,6 @@ public class BoardScript : MonoBehaviour
     private bool CanAttack = true;
     private bool IsAttackCombo = false;
     private bool CanSelectAnother = true;
-    //private GameObject moveAnimObj = null;
-    //private float moveAnimDeltaX, moveAnimDeltaZ, moveAnimEndX, moveAnimEndZ;
     private void Awake()
     {
         BoardLength =(int)Mathf.Sqrt(Grid.Length);
@@ -200,11 +198,12 @@ public class BoardScript : MonoBehaviour
         } else return false;
 
     }
-    public void MoveSelectedStone(int endX, int endZ)
+    public IEnumerator MoveSelectedStone(int endX, int endZ)
     {
         Vector2Int startV = WSH.GetSelectedStone();
         
         WSH.MoveStone(endX, endZ);
+        yield return new WaitForSeconds(1);
 
         DestroyEnemyStonesOnTheWay(startV.x, startV.y, endX, endZ);
         
@@ -215,15 +214,17 @@ public class BoardScript : MonoBehaviour
         if (IsAttackCombo)
         {
             Vector2Int temp = WSH.GetSelectedStone();
-            CanSelectAnother = false;
+            SetCanSelect(false);
             SelectCellsToAttack(temp.x, temp.y);
         }
-        if (IsAttackCombo == false) CanSelectAnother = true;
+
+        selectedStone = null;
 
         if (CurSelectedCells.Count <= 0)
         {
-            EAI.OpponentMove();
-
+            SetCanSelect(false);
+            StartCoroutine(EAI.OpponentMove());
+            yield return new WaitForSeconds(0.5f);
             WSH.FindTarget();
         }
     }
@@ -331,8 +332,12 @@ public class BoardScript : MonoBehaviour
     {
         return CanSelectAnother;
     }
+    public void SetCanSelect(bool b)
+    {
+        CanSelectAnother = b;
+    }
     //ENEMY
-    public bool EnemyMove(int x, int z, GameObject selectedObj, int type)
+    public bool EnemyMove(int x, int z, int type)
     {
         if (IsZExist(z - 1))
         {
@@ -340,10 +345,10 @@ public class BoardScript : MonoBehaviour
             {
                 if (!Grid[x + 1, z - 1].GetComponent<SlotScript>().IsOcupied())
                 {
-                    SetUnOcupied((int)selectedObj.transform.position.x, (int)selectedObj.transform.position.z);
-                    selectedObj.transform.position = new Vector3(x + 1, 0.2f, z - 1);
-                    SetOcupied((int)selectedObj.transform.position.x, (int)selectedObj.transform.position.z, Color.Black);
-                    
+                    SetUnOcupied(x, z);
+                    EAI.MakeMoveAnim(x + 1, z - 1);
+                    SetOcupied(x + 1, z - 1, Color.Black);
+
                     return true;
                 }
             }
@@ -351,9 +356,9 @@ public class BoardScript : MonoBehaviour
             {
                 if (!Grid[x - 1, z - 1].GetComponent<SlotScript>().IsOcupied())
                 {
-                    SetUnOcupied((int)selectedObj.transform.position.x, (int)selectedObj.transform.position.z);
-                    selectedObj.transform.position = new Vector3(x - 1, 0.2f, z - 1);
-                    SetOcupied((int)selectedObj.transform.position.x, (int)selectedObj.transform.position.z, Color.Black);
+                    SetUnOcupied(x, z);
+                    EAI.MakeMoveAnim(x - 1, z - 1);
+                    SetOcupied(x - 1, z - 1, Color.Black);
                     
                     return true;
                 }
@@ -365,7 +370,6 @@ public class BoardScript : MonoBehaviour
     {
         int x = (int)enemyStone.transform.position.x;
         int z = (int)enemyStone.transform.position.z;
-
         if (IsZExist(z + 2))
         {
             if (IsXExist(x + 2) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
@@ -400,28 +404,28 @@ public class BoardScript : MonoBehaviour
         int tempZ = (int)enemyStone.transform.position.z;
 
         SetUnOcupied(tempX, tempZ);
-
+        Debug.Log("enemy attack");
         if (type == 1)
         {
-            enemyStone.transform.position = new Vector3(tempX + 2, 0.2f, tempZ + 2);
+            EAI.MakeMoveAnim(tempX + 2, tempZ + 2, enemyStone);
             whiteStonesObj.GetComponent<WhiteStonesHandle>().FindAndDelete(tempX + 1, tempZ + 1);
             SetOcupied(tempX + 2, tempZ + 2, Color.Black);
         }
         else if (type == 2)
         {
-            enemyStone.transform.position = new Vector3(tempX - 2, 0.2f, tempZ + 2);
+            EAI.MakeMoveAnim(tempX - 2, tempZ + 2, enemyStone);
             whiteStonesObj.GetComponent<WhiteStonesHandle>().FindAndDelete(tempX - 1, tempZ + 1);
             SetOcupied(tempX - 2, tempZ + 2, Color.Black);
         }
         else if (type == 3)
         {
-            enemyStone.transform.position = new Vector3(tempX + 2, 0.2f, tempZ - 2);
+            EAI.MakeMoveAnim(tempX + 2, tempZ - 2, enemyStone);
             whiteStonesObj.GetComponent<WhiteStonesHandle>().FindAndDelete(tempX + 1, tempZ - 1);
             SetOcupied(tempX + 2, tempZ - 2, Color.Black);
         }
         else if (type == 4)
         {
-            enemyStone.transform.position = new Vector3(tempX - 2, 0.2f, tempZ - 2);
+            EAI.MakeMoveAnim(tempX - 2, tempZ - 2, enemyStone);
             whiteStonesObj.GetComponent<WhiteStonesHandle>().FindAndDelete(tempX - 1, tempZ - 1);
             SetOcupied(tempX - 2, tempZ - 2, Color.Black);
         }
@@ -440,7 +444,7 @@ public class BoardScript : MonoBehaviour
                 if (IsCellExist(leftX - 1, tempZ - 1) && !Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     SetUnOcupied(x, z);
-                    enemyKing.transform.position = new Vector3(leftX - 1, 0,tempZ - 1);
+                    EAI.MakeMoveAnim(leftX - 1, tempZ - 1, enemyKing);
                     SetOcupied(leftX - 1, tempZ - 1, Color.Black);
                     WSH.FindAndDelete(leftX, tempZ);
                     return true;
@@ -457,7 +461,7 @@ public class BoardScript : MonoBehaviour
                 if (IsCellExist(rightX + 1, tempZ - 1) && !Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     SetUnOcupied(x, z);
-                    enemyKing.transform.position = new Vector3(rightX + 1, 0,tempZ - 1);
+                    EAI.MakeMoveAnim(rightX + 1, tempZ - 1, enemyKing);
                     SetOcupied(rightX + 1, tempZ - 1, Color.Black);
                     WSH.FindAndDelete(rightX, tempZ);
                     return true;
@@ -474,7 +478,7 @@ public class BoardScript : MonoBehaviour
                 if (IsCellExist(leftX - 1, tempZ + 1) && !Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     SetUnOcupied(x, z);
-                    enemyKing.transform.position = new Vector3(leftX - 1, 0,tempZ + 1);
+                    EAI.MakeMoveAnim(leftX - 1, tempZ + 1, enemyKing);
                     SetOcupied(leftX - 1, tempZ + 1, Color.Black);
                     WSH.FindAndDelete(leftX, tempZ);
                     return true;
@@ -491,7 +495,7 @@ public class BoardScript : MonoBehaviour
                 if (IsCellExist(rightX + 1, tempZ + 1) && !Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     SetUnOcupied(x, z);
-                    enemyKing.transform.position = new Vector3(rightX + 1, 0,tempZ + 1);
+                    EAI.MakeMoveAnim(rightX + 1, tempZ + 1, enemyKing);
                     SetOcupied(rightX + 1, tempZ + 1, Color.Black);
                     WSH.FindAndDelete(rightX, tempZ);
                     return true;
@@ -509,7 +513,7 @@ public class BoardScript : MonoBehaviour
             if (IsXExist(leftX) && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
                 SetUnOcupied(x, z);
-                enemyKing.transform.position = new Vector3(leftX, 0,tempZ);
+                EAI.MakeMoveAnim(leftX, tempZ, enemyKing);
                 SetOcupied(leftX, tempZ, Color.Black);
                 WSH.FindAndDelete(leftX, tempZ);
                 return true;
@@ -523,7 +527,7 @@ public class BoardScript : MonoBehaviour
             if (IsXExist(rightX) && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
                 SetUnOcupied(x, z);
-                enemyKing.transform.position = new Vector3(rightX, 0,tempZ);
+                EAI.MakeMoveAnim(rightX, tempZ, enemyKing);
                 SetOcupied(rightX, tempZ, Color.Black);
                 WSH.FindAndDelete(rightX, tempZ);
                 return true;
@@ -537,7 +541,7 @@ public class BoardScript : MonoBehaviour
             if (IsXExist(leftX) && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
                 SetUnOcupied(x, z);
-                enemyKing.transform.position = new Vector3(leftX, 0,tempZ);
+                EAI.MakeMoveAnim(leftX, tempZ, enemyKing);
                 SetOcupied(leftX, tempZ, Color.Black);
                 WSH.FindAndDelete(leftX, tempZ);
                 return true;
@@ -551,7 +555,7 @@ public class BoardScript : MonoBehaviour
             if (IsXExist(rightX) && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
                 SetUnOcupied(x, z);
-                enemyKing.transform.position = new Vector3(rightX, 0,tempZ);
+                EAI.MakeMoveAnim(rightX, tempZ, enemyKing);
                 SetOcupied(rightX, tempZ, Color.Black);
                 WSH.FindAndDelete(rightX, tempZ);
                 return true;
@@ -564,6 +568,10 @@ public class BoardScript : MonoBehaviour
         CanvasActivity = !CanvasActivity;
         MenuCanvas.SetActive(CanvasActivity);
     }
+    public void ShowCanvas(bool b)
+    {
+        MenuCanvas.SetActive(b);
+    }
     public void RestartScene()
     {
         SceneManager.LoadScene(1);
@@ -572,20 +580,4 @@ public class BoardScript : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-    //ХУЕТА БЛЯТЬ
-    /*public void MoveAnim()
-    {
-        moveAnimObj.transform.position += new Vector3(moveAnimDeltaX, 0, moveAnimDeltaZ);
-        if (moveAnimObj.transform.position.x >= moveAnimEndX) moveAnimObj = null;
-    }
-    public void SetMoveAnim(GameObject obj, int endX, int endZ)
-    {
-        moveAnimObj = obj;
-
-        moveAnimEndX = endX;
-        moveAnimEndZ = endZ;
-
-        moveAnimDeltaX = (moveAnimEndX - moveAnimObj.transform.position.x) / 50.0f;
-        moveAnimDeltaZ = (moveAnimEndZ - moveAnimObj.transform.position.z) / 50.0f;
-    }*/
 }
