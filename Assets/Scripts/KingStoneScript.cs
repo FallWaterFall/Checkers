@@ -13,7 +13,6 @@ public class KingStoneScript : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        Debug.Log("OnKingStoneClick");
         WSH.SelectKingStone((int)this.transform.position.x, (int)this.transform.position.z, this.gameObject);
     }
 }

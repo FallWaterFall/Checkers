@@ -10621,8 +10621,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyAIobj: {fileID: 766341434}
   onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
+  onSelectChoiseMaterial: {fileID: 2100000, guid: 7ad2b6270e9744393989599aa17c2fdb, type: 2}
   whiteStonesObj: {fileID: 1252213552}
   MenuCanvas: {fileID: 1209626682}
+  CanSelectStone: []
 --- !u!1 &2008920431
 GameObject:
   m_ObjectHideFlags: 0

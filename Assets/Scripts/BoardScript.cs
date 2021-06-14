@@ -23,6 +23,7 @@ public class BoardScript : MonoBehaviour
 {
     [SerializeField] private GameObject EnemyAIobj;
     [SerializeField] private Material onSelectMaterial;
+    [SerializeField] private Material onSelectChoiseMaterial;
     [SerializeField] private GameObject whiteStonesObj;
     [SerializeField] private GameObject MenuCanvas;
     private bool CanvasActivity = false;
@@ -35,6 +36,8 @@ public class BoardScript : MonoBehaviour
     private bool CanAttack = true;
     private bool IsAttackCombo = false;
     private bool CanSelectAnother = true;
+    private bool IsSelectKing = false;
+    [SerializeField] private List<GameObject> CanSelectStone = new List<GameObject>();
     private void Awake()
     {
         BoardLength =(int)Mathf.Sqrt(Grid.Length);
@@ -145,8 +148,144 @@ public class BoardScript : MonoBehaviour
             }
         }
     }
+    public bool SerchCellsForAttack(int x, int z)
+    {
+        CanAttack = false;
+        if (IsZExist(z + 2))
+        {
+            if (IsXExist(x + 2) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[x + 2, z + 2], Grid[x + 2, z + 2].GetComponent<Renderer>().material));
+                Grid[x + 2, z + 2].GetComponent<Renderer>().material = onSelectChoiseMaterial;
+                CanAttack = true;
+            }
+            if (IsXExist(x - 2) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[x - 2, z + 2], Grid[x - 2, z + 2].GetComponent<Renderer>().material));
+                Grid[x - 2, z + 2].GetComponent<Renderer>().material = onSelectChoiseMaterial;
+                CanAttack = true;
+            }
+        }
+        //Check Lower
+        if (IsZExist(z - 2))
+        {
+            if (IsXExist(x + 2) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[x + 2, z - 2], Grid[x + 2, z - 2].GetComponent<Renderer>().material));
+                Grid[x + 2, z - 2].GetComponent<Renderer>().material = onSelectChoiseMaterial;
+                CanAttack = true;
+            }
+            if (IsXExist(x - 2) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[x - 2, z - 2], Grid[x - 2, z - 2].GetComponent<Renderer>().material));
+                Grid[x - 2, z - 2].GetComponent<Renderer>().material = onSelectChoiseMaterial;
+                CanAttack = true;
+            }
+        }
+
+        if (CanAttack)
+        {
+            CanSelectAnother = false;
+            return true;
+        } else return false;
+    }
+    public bool SerchCellsForKingAttack(int x, int z)
+    {
+        bool CanAttackHere = false;
+        CanAttack = false;
+        for (int leftX = x - 1, tempZ = z - 1; tempZ >= 0; leftX--, tempZ--)
+        {
+            if (!IsCellExist(leftX, tempZ)) break;
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+
+            if (CanAttackHere && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[leftX, tempZ], Grid[leftX, tempZ].GetComponent<Renderer>().material));
+                Grid[leftX, tempZ].GetComponent<Renderer>().material = onSelectChoiseMaterial;
+            }
+
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            { 
+                if (IsXExist(leftX - 1) && !Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
+                {
+                    CanAttackHere = false;
+                    CanAttack = true;
+                } else break;
+            }
+        }
+        CanAttackHere = false;
+        for (int rightX = x + 1, tempZ = z - 1; tempZ >= 0; rightX++, tempZ--)
+        {
+            if (!IsCellExist(rightX, tempZ)) break;
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+
+            if (CanAttackHere && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[rightX, tempZ], Grid[rightX, tempZ].GetComponent<Renderer>().material));
+                Grid[rightX, tempZ].GetComponent<Renderer>().material = onSelectChoiseMaterial;
+            }
+
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            { 
+                if (IsXExist(rightX + 1) && !Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
+                {
+                    CanAttackHere = false;
+                    CanAttack = true;
+                } else break;
+            }
+        }
+        CanAttackHere = false;
+        for (int leftX = x - 1, tempZ = z + 1; tempZ >= 0; leftX--, tempZ++)
+        {
+            if (!IsCellExist(leftX, tempZ)) break;
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+
+            if (CanAttackHere && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[leftX, tempZ], Grid[leftX, tempZ].GetComponent<Renderer>().material));
+                Grid[leftX, tempZ].GetComponent<Renderer>().material = onSelectChoiseMaterial;
+            }
+
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            { 
+                if (IsXExist(leftX - 1) && !Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
+                {
+                    CanAttackHere = false;
+                    CanAttack = true;
+                } else break;
+            }
+        }
+        CanAttackHere = false;
+        for (int rightX = x + 1, tempZ = z + 1; tempZ >= 0; rightX++, tempZ++)
+        {
+            if (!IsCellExist(rightX, tempZ)) break;
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+
+            if (CanAttackHere && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[rightX, tempZ], Grid[rightX, tempZ].GetComponent<Renderer>().material));
+                Grid[rightX, tempZ].GetComponent<Renderer>().material = onSelectChoiseMaterial;
+            }
+
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            { 
+                if (IsXExist(rightX + 1) && !Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
+                {
+                    CanAttackHere = false;
+                    CanAttack = true;
+                } else break;
+            }
+        }
+
+        if (CanAttack)
+        {
+            CanSelectAnother = false;
+            return true;
+        } else return false;
+    }
     public bool SelectCellsToAttack(int x, int z)
     {
+        IsSelectKing = false;
         CanAttack = false;
         IsAttackCombo = false;
         int MovesCount = CurSelectedCells.Count;
@@ -190,6 +329,7 @@ public class BoardScript : MonoBehaviour
                 CanAttack = true;
             }
         }
+
         if (CanAttack)
         {
             CanSelectAnother = false;
@@ -198,24 +338,132 @@ public class BoardScript : MonoBehaviour
         } else return false;
 
     }
+    public bool SelectCellsToKingAttack(int x, int z)
+    {
+        Debug.Log("SelectCellsToKingAttack");
+        ClearSelection();
+
+        bool CanAttackHere = false;
+        CanAttack = false;
+        IsAttackCombo = false;
+        IsSelectKing = false;
+
+        CanAttackHere = false;
+        for (int leftX = x - 1, tempZ = z - 1; tempZ >= 0; leftX--, tempZ--)
+        {
+            if (!IsCellExist(leftX, tempZ)) break;
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+
+            if (CanAttackHere && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[leftX, tempZ], Grid[leftX, tempZ].GetComponent<Renderer>().material));
+                Grid[leftX, tempZ].GetComponent<Renderer>().material = onSelectMaterial;
+                Grid[leftX, tempZ].GetComponent<SlotScript>().SetSelection(true);
+            }
+
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            { 
+                if (IsXExist(leftX - 1) && !Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
+                {
+                    CanAttackHere = true;
+                    CanAttack = true;
+                } else break;
+            }
+        }
+        CanAttackHere = false;
+        for (int rightX = x + 1, tempZ = z - 1; tempZ >= 0; rightX++, tempZ--)
+        {
+            if (!IsCellExist(rightX, tempZ)) break;
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+
+            if (CanAttackHere && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[rightX, tempZ], Grid[rightX, tempZ].GetComponent<Renderer>().material));
+                Grid[rightX, tempZ].GetComponent<Renderer>().material = onSelectMaterial;
+                Grid[rightX, tempZ].GetComponent<SlotScript>().SetSelection(true);
+            }
+
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            { 
+                if (IsXExist(rightX + 1) && !Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
+                {
+                    CanAttackHere = true;
+                    CanAttack = true;
+                } else break;
+            }
+        }
+        CanAttackHere = false;
+        for (int leftX = x - 1, tempZ = z + 1; tempZ < 8; leftX--, tempZ++)
+        {
+            if (!IsCellExist(leftX, tempZ)) break;
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+
+            if (CanAttackHere && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[leftX, tempZ], Grid[leftX, tempZ].GetComponent<Renderer>().material));
+                Grid[leftX, tempZ].GetComponent<Renderer>().material = onSelectMaterial;
+                Grid[leftX, tempZ].GetComponent<SlotScript>().SetSelection(true);
+            }
+
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            { 
+                if (IsXExist(leftX - 1) && !Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
+                {
+                    CanAttackHere = true;
+                    CanAttack = true;
+                } else break;
+            }
+        }
+        CanAttackHere = false;
+        for (int rightX = x + 1, tempZ = z + 1; tempZ < 8; rightX++, tempZ++)
+        {
+            if (!IsCellExist(rightX, tempZ)) break;
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+
+            if (CanAttackHere && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
+            {
+                CurSelectedCells.Add(new SelectedItems(Grid[rightX, tempZ], Grid[rightX, tempZ].GetComponent<Renderer>().material));
+                Grid[rightX, tempZ].GetComponent<Renderer>().material = onSelectMaterial;
+                Grid[rightX, tempZ].GetComponent<SlotScript>().SetSelection(true);
+            }
+
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            { 
+                if (IsXExist(rightX + 1) && !Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
+                {
+                    CanAttackHere = true;
+                    CanAttack = true;
+                } else break;
+            }
+        }
+
+        if (CanAttack)
+        {
+            IsAttackCombo = true;
+            IsSelectKing = true;
+            CanSelectAnother = false;
+            return true;
+        } else return false;
+    }
     public IEnumerator MoveSelectedStone(int endX, int endZ)
     {
         Vector2Int startV = WSH.GetSelectedStone();
         
         WSH.MoveStone(endX, endZ);
-        yield return new WaitForSeconds(1);
+        ClearSelection();
+        yield return new WaitForSeconds(1.05f);
 
         DestroyEnemyStonesOnTheWay(startV.x, startV.y, endX, endZ);
         
         SetOcupied(endX, endZ, Color.White);
-        
-        ClearSelection();
 
         if (IsAttackCombo)
         {
             Vector2Int temp = WSH.GetSelectedStone();
             SetCanSelect(false);
-            SelectCellsToAttack(temp.x, temp.y);
+
+            if (IsSelectKing) SelectCellsToKingAttack(temp.x, temp.y);
+            else SelectCellsToAttack(temp.x, temp.y);
         }
 
         selectedStone = null;
@@ -224,8 +472,6 @@ public class BoardScript : MonoBehaviour
         {
             SetCanSelect(false);
             StartCoroutine(EAI.OpponentMove());
-            yield return new WaitForSeconds(0.5f);
-            WSH.FindTarget();
         }
     }
     private void DestroyEnemyStonesOnTheWay(int startX, int startZ, int endX, int endZ)
@@ -336,7 +582,27 @@ public class BoardScript : MonoBehaviour
     {
         CanSelectAnother = b;
     }
-    //ENEMY
+    public bool IsInCanSelectList(GameObject obj)
+    {
+        if (CanSelectStone.Count > 0)
+        {
+            for (int i = 0; i < CanSelectStone.Count; i++)
+            {
+                if (CanSelectStone[i] == obj) return true;
+            }
+        }
+        return false;
+    }
+    public void AddInCanSelectList(GameObject obj)
+    {
+        CanSelectStone.Add(obj);
+    }
+    public void FindTarget()
+    {
+        CanSelectStone.Clear();
+        WSH.FindTarget();
+    }
+    //ENEMY////////////////////////////////////////
     public bool EnemyMove(int x, int z, int type)
     {
         if (IsZExist(z - 1))
@@ -563,6 +829,7 @@ public class BoardScript : MonoBehaviour
         }
         return false;
     }
+    //Level control////////////////////////////////
     public void ShowCanvas()
     {
         CanvasActivity = !CanvasActivity;

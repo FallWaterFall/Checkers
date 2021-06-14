@@ -30,7 +30,7 @@ public class WhiteStonesHandle : MonoBehaviour
     }
     public void SelectStone(GameObject obj)
     {
-        if (!BS.CanSelect()) return;
+        if (!BS.CanSelect() && !BS.IsInCanSelectList(obj)) return;
         if (SelectedStone.obj != null) SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
 
         Renderer objRend = obj.GetComponent<Renderer>();
@@ -39,7 +39,7 @@ public class WhiteStonesHandle : MonoBehaviour
     }
     public void SelectStone(int x, int z, GameObject obj)
     {
-        if (!BS.CanSelect()) return;
+        if (!BS.CanSelect() && !BS.IsInCanSelectList(obj)) return;
 
         if (SelectedStone.obj != null) SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
 
@@ -51,13 +51,13 @@ public class WhiteStonesHandle : MonoBehaviour
     }
     public void SelectKingStone(int x, int z, GameObject obj)
     {
-        if (!BS.CanSelect()) return;
+        if (!BS.CanSelect() && !BS.IsInCanSelectList(obj)) return;
         if (SelectedStone.obj != null) SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
 
         Renderer objRend = obj.GetComponent<Renderer>();
         SelectedStone = new SelectedItems(obj, objRend.material);
         objRend.material = onSelectMaterial;
-        BS.SelectCellsForKing(x, z);
+        if (!BS.SelectCellsToKingAttack(x, z)) BS.SelectCellsForKing(x, z);
     }
     public void MoveStone(int endX, int endZ)
     {
@@ -115,9 +115,13 @@ public class WhiteStonesHandle : MonoBehaviour
         for (int i = 0; i < whiteStones.Count; i++)
         {
             SelectStone(whiteStones[i]);
-            if (BS.SelectCellsToAttack((int)whiteStones[i].transform.position.x, (int)whiteStones[i].transform.position.z)) return;
+            if (whiteStones[i].GetComponent<StoneScript>() != null)
+                if (BS.SerchCellsForAttack((int)whiteStones[i].transform.position.x, (int)whiteStones[i].transform.position.z)) BS.AddInCanSelectList(whiteStones[i]);
+            if (whiteStones[i].GetComponent<KingStoneScript>() != null)
+                if (BS.SerchCellsForKingAttack((int)whiteStones[i].transform.position.x, (int)whiteStones[i].transform.position.z)) BS.AddInCanSelectList(whiteStones[i]);
         }
         if (SelectedStone.obj != null) SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
+        
         SelectedStone.obj = null;
     }
     public void FindAndDelete(int x, int z)

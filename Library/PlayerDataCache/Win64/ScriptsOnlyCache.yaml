@@ -986,7 +986,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: c63d1a82838e902c24879a5e304022b3
+      Hash: 6122d4e36141cb9530976758db18e07c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BoardScript
@@ -1024,4 +1024,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MenuScene.unity
   - Assets/Scenes/GameVSBot.unity
-  playerPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Checkers3D/3DProject.exe
+  playerPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Checker3DWin/3DProject.exe
