@@ -70,8 +70,6 @@ public class WhiteStonesHandle : MonoBehaviour
         moveAnimDeltaX = (endX - SelectedStone.obj.transform.position.x) / 50.0f;
         moveAnimDeltaZ = (endZ - SelectedStone.obj.transform.position.z) / 50.0f;
 
-        BS.SetCanSelect(false);
-
         if (SelectedStone.obj.transform.position.x < endX) moveAnimDirection = 0;
         else moveAnimDirection = 1;
 
@@ -136,7 +134,7 @@ public class WhiteStonesHandle : MonoBehaviour
                 Destroy(obj);
             }
         }
-        if (whiteStones.Count == 0) BS.ShowCanvas(true); 
+        if (whiteStones.Count == 0) BS.EndGame(false); 
     }
     public Vector2Int GetSelectedStone()
     {

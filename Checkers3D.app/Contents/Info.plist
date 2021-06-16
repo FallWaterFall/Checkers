@@ -5,17 +5,17 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>English</string>
     <key>CFBundleExecutable</key>
-    <string>3DProject</string>
+    <string>Checkers3D</string>
     <key>CFBundleGetInfoString</key>
     <string>Unity Player version 2021.1.11f1 (4d8c25f7477e). (c) 2021 Unity Technologies ApS. All rights reserved.</string>
     <key>CFBundleIconFile</key>
     <string>PlayerIcon.icns</string>
     <key>CFBundleIdentifier</key>
-    <string>com.DefaultCompany.3DProject</string>
+    <string>com.BulkaHlebaCorporation.Checkers3D</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>3DProject</string>
+    <string>Checkers3D</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>

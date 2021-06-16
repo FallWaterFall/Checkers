@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] GameObject EnemyStonesObj;
     [SerializeField] GameObject enemyKingObj;
     private BoardScript BS;
-    private List<GameObject> enemyStones = new List<GameObject>();
+    [SerializeField] private List<GameObject> enemyStones = new List<GameObject>();
     [SerializeField] private List<GameObject> enemyKingStones = new List<GameObject>();
     private GameObject moveAnimObj = null;
     private float moveAnimDeltaX, moveAnimDeltaZ, moveAnimEndX, moveAnimEndZ;
@@ -18,7 +17,7 @@ public class EnemyAI : MonoBehaviour
         BS = obj.GetComponent<BoardScript>();
         for (int i = 0; i < 12; i++)
         {
-            enemyStones.Add(EnemyStonesObj.transform.GetChild(i).gameObject);
+            enemyStones.Add(this.transform.GetChild(i).gameObject);
             BS.SetOcupied((int)enemyStones[i].transform.position.x, (int)enemyStones[i].transform.position.z, Color.Black);
         }
     }
@@ -49,11 +48,9 @@ public class EnemyAI : MonoBehaviour
             {
                 if (BS.CheckEnemyAttack(enemyStones[i]) == true)
                 {
-                    moveAmount++;
                     yield return new WaitForSeconds(0.51f);
                     while (BS.CheckEnemyAttack(enemyStones[i]) == true)
                     {
-                        moveAmount++;
                         yield return new WaitForSeconds(0.51f);
                         Debug.Log("EnemyCombo");
                     }
@@ -95,17 +92,16 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        if (!isMoveMake)
+        if (!isMoveMake && enemyKingStones.Count + enemyStones.Count > 0)
         {
             Debug.Log("Enemy stones can't move");
-            BS.ShowCanvas(true);
-            BS.SetCanSelect(false);
+            BS.EndGame(true);
         }
         else
         {
             yield return new WaitForSeconds(moveAmount * 0.51f);
-            BS.SetCanSelect(true);
             BS.FindTarget();
+            BS.SetCanSelect(true);
         }
     }
     public void MakeMoveAnim(int endX, int endZ)
@@ -172,8 +168,7 @@ public class EnemyAI : MonoBehaviour
         if (enemyStones.Count + enemyKingStones.Count == 0)
         {
             Debug.Log("Enemy stones < 0");
-            BS.ShowCanvas(true);
-            BS.SetCanSelect(false);
+            BS.EndGame(true);
         }
     }
     public void ChangeStoneToKing(int i)
@@ -183,7 +178,7 @@ public class EnemyAI : MonoBehaviour
         enemyStones.Remove(obj);
         var newObj = Instantiate(enemyKingObj, obj.transform.position, Quaternion.Euler(-90, 0, 0));
         Destroy(obj);
-        newObj.transform.SetParent(EnemyStonesObj.transform);
+        newObj.transform.SetParent(this.transform);
         enemyKingStones.Add(newObj);
     }
     private int FindIndexOfObj(GameObject obj)

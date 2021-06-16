@@ -208,7 +208,7 @@ public class BoardScript : MonoBehaviour
             { 
                 if (IsXExist(leftX - 1) && !Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
-                    CanAttackHere = false;
+                    CanAttackHere = true;
                     CanAttack = true;
                 } else break;
             }
@@ -229,7 +229,7 @@ public class BoardScript : MonoBehaviour
             { 
                 if (IsXExist(rightX + 1) && !Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
-                    CanAttackHere = false;
+                    CanAttackHere = true;
                     CanAttack = true;
                 } else break;
             }
@@ -250,7 +250,7 @@ public class BoardScript : MonoBehaviour
             { 
                 if (IsXExist(leftX - 1) && !Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
-                    CanAttackHere = false;
+                    CanAttackHere = true;
                     CanAttack = true;
                 } else break;
             }
@@ -271,7 +271,7 @@ public class BoardScript : MonoBehaviour
             { 
                 if (IsXExist(rightX + 1) && !Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
-                    CanAttackHere = false;
+                    CanAttackHere = true;
                     CanAttack = true;
                 } else break;
             }
@@ -340,7 +340,6 @@ public class BoardScript : MonoBehaviour
     }
     public bool SelectCellsToKingAttack(int x, int z)
     {
-        Debug.Log("SelectCellsToKingAttack");
         ClearSelection();
 
         bool CanAttackHere = false;
@@ -450,7 +449,11 @@ public class BoardScript : MonoBehaviour
         Vector2Int startV = WSH.GetSelectedStone();
         
         WSH.MoveStone(endX, endZ);
+
+        SetCanSelect(false);
         ClearSelection();
+        CanSelectStone.Clear();
+        
         yield return new WaitForSeconds(1.05f);
 
         DestroyEnemyStonesOnTheWay(startV.x, startV.y, endX, endZ);
@@ -460,8 +463,6 @@ public class BoardScript : MonoBehaviour
         if (IsAttackCombo)
         {
             Vector2Int temp = WSH.GetSelectedStone();
-            SetCanSelect(false);
-
             if (IsSelectKing) SelectCellsToKingAttack(temp.x, temp.y);
             else SelectCellsToAttack(temp.x, temp.y);
         }
@@ -670,7 +671,6 @@ public class BoardScript : MonoBehaviour
         int tempZ = (int)enemyStone.transform.position.z;
 
         SetUnOcupied(tempX, tempZ);
-        Debug.Log("enemy attack");
         if (type == 1)
         {
             EAI.MakeMoveAnim(tempX + 2, tempZ + 2, enemyStone);
@@ -830,14 +830,21 @@ public class BoardScript : MonoBehaviour
         return false;
     }
     //Level control////////////////////////////////
+    public void EndGame(bool win)
+    {
+        MenuCanvas.SetActive(true);
+        SetCanSelect(false);
+        if (win)
+        {
+            SaveData data = SaveSystem.Load();
+            data.moneyAmount += 10;
+            SaveSystem.Save(data);
+        }
+    }
     public void ShowCanvas()
     {
         CanvasActivity = !CanvasActivity;
         MenuCanvas.SetActive(CanvasActivity);
-    }
-    public void ShowCanvas(bool b)
-    {
-        MenuCanvas.SetActive(b);
     }
     public void RestartScene()
     {
