@@ -24,7 +24,7 @@ public class WhiteStonesHandle : MonoBehaviour
             whiteStones.Add(obj);
         }
     }
-    public void Update()
+    public void FixedUpdate()
     {
         if (moveAnimObj != null) MoveStoneAnim();
     }
@@ -113,9 +113,9 @@ public class WhiteStonesHandle : MonoBehaviour
         for (int i = 0; i < whiteStones.Count; i++)
         {
             SelectStone(whiteStones[i]);
-            if (whiteStones[i].GetComponent<StoneScript>() != null)
+            if (whiteStones[i].gameObject.tag == "AllyStone")
                 if (BS.SerchCellsForAttack((int)whiteStones[i].transform.position.x, (int)whiteStones[i].transform.position.z)) BS.AddInCanSelectList(whiteStones[i]);
-            if (whiteStones[i].GetComponent<KingStoneScript>() != null)
+            if (whiteStones[i].gameObject.tag == "KingAllyStone")
                 if (BS.SerchCellsForKingAttack((int)whiteStones[i].transform.position.x, (int)whiteStones[i].transform.position.z)) BS.AddInCanSelectList(whiteStones[i]);
         }
         if (SelectedStone.obj != null) SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;

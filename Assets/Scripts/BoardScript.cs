@@ -37,7 +37,7 @@ public class BoardScript : MonoBehaviour
     private bool IsAttackCombo = false;
     private bool CanSelectAnother = true;
     private bool IsSelectKing = false;
-    [SerializeField] private List<GameObject> CanSelectStone = new List<GameObject>();
+    private List<GameObject> CanSelectStone = new List<GameObject>();
     private void Awake()
     {
         BoardLength =(int)Mathf.Sqrt(Grid.Length);
@@ -206,7 +206,7 @@ public class BoardScript : MonoBehaviour
 
             if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
             { 
-                if (IsXExist(leftX - 1) && !Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
+                if (IsCellExist(leftX - 1, tempZ - 1) && !Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     CanAttackHere = true;
                     CanAttack = true;
@@ -227,7 +227,7 @@ public class BoardScript : MonoBehaviour
 
             if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
             { 
-                if (IsXExist(rightX + 1) && !Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
+                if (IsCellExist(rightX + 1, tempZ - 1) && !Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     CanAttackHere = true;
                     CanAttack = true;
@@ -248,7 +248,7 @@ public class BoardScript : MonoBehaviour
 
             if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
             { 
-                if (IsXExist(leftX - 1) && !Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
+                if (IsCellExist(leftX - 1, tempZ + 1) && !Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     CanAttackHere = true;
                     CanAttack = true;
@@ -269,7 +269,7 @@ public class BoardScript : MonoBehaviour
 
             if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
             { 
-                if (IsXExist(rightX + 1) && !Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
+                if (IsCellExist(rightX + 1, tempZ + 1) && !Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     CanAttackHere = true;
                     CanAttack = true;
@@ -362,7 +362,7 @@ public class BoardScript : MonoBehaviour
 
             if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
             { 
-                if (IsXExist(leftX - 1) && !Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
+                if (IsCellExist(leftX - 1, tempZ - 1) && !Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     CanAttackHere = true;
                     CanAttack = true;
@@ -384,7 +384,7 @@ public class BoardScript : MonoBehaviour
 
             if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
             { 
-                if (IsXExist(rightX + 1) && !Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
+                if (IsCellExist(rightX + 1, tempZ - 1) && !Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     CanAttackHere = true;
                     CanAttack = true;
@@ -406,7 +406,7 @@ public class BoardScript : MonoBehaviour
 
             if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
             { 
-                if (IsXExist(leftX - 1) && !Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
+                if (IsCellExist(leftX - 1, tempZ + 1) && !Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     CanAttackHere = true;
                     CanAttack = true;
@@ -428,7 +428,7 @@ public class BoardScript : MonoBehaviour
 
             if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
             { 
-                if (IsXExist(rightX + 1) && !Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
+                if (IsCellExist(rightX + 1, tempZ + 1) && !Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     CanAttackHere = true;
                     CanAttack = true;
@@ -543,6 +543,10 @@ public class BoardScript : MonoBehaviour
         else
             return false;
     }
+    public GameObject GetCell(int x, int z)
+    {
+        return Grid[x, z];
+    }
     public void ClearSelection()
     {
         if (CurSelectedCells.Count > 0)
@@ -602,6 +606,7 @@ public class BoardScript : MonoBehaviour
     {
         CanSelectStone.Clear();
         WSH.FindTarget();
+        if (CanSelectStone.Count == 0) CanSelectAnother = true;
     }
     //ENEMY////////////////////////////////////////
     public bool EnemyMove(int x, int z, int type)

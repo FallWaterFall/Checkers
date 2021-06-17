@@ -108,6 +108,8 @@
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"/Applications/Unity/Hub/Editor/2021.1.11f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll"
+-r:"/Applications/Unity/Hub/Editor/2021.1.11f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.1.11f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.1.11f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.1.11f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.dll"
@@ -319,6 +321,7 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/VSSettingsProvider.ref.dll"
+"Assets/ClickHandle.cs"
 "Assets/Scripts/BoardScript.cs"
 "Assets/Scripts/CameraRotatorScript.cs"
 "Assets/Scripts/DataBetweenScenes.cs"
@@ -331,7 +334,6 @@
 "Assets/Scripts/ShopScripts/ShopItemScript.cs"
 "Assets/Scripts/ShopScripts/ShopScript.cs"
 "Assets/Scripts/SlotScript.cs"
-"Assets/Scripts/StoneScript.cs"
 "Assets/Scripts/WhiteStonesHandle.cs"
 -langversion:8.0
 

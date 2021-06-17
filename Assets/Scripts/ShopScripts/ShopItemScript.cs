@@ -5,14 +5,16 @@ using UnityEngine;
 public class ShopItemScript : MonoBehaviour
 {
     private ShopScript SS;
+    private int type = -1;
     private int SkinNum = -1;
     private void Start()
     {
-        SS = this.transform.parent.transform.parent.transform.parent.GetComponent<ShopScript>();
+        SS = this.transform.parent.transform.parent.transform.parent.transform.parent.GetComponent<ShopScript>();
     }
-    public void SetSkinNum(int i)
+    public void SetSkinTypeAndNum(int _type, int _num)
     {
-        SkinNum = i;
+        type = _type;
+        SkinNum = _num;
     }
     public void SetButton(int ButtonNum)
     {
@@ -40,7 +42,7 @@ public class ShopItemScript : MonoBehaviour
         if (SS.GetMoneyAmount() >= 100)
         {
             SS.ChengeMoneyAmount(-100);
-            SS.AddToList(SkinNum);
+            SS.AddToList(type, SkinNum);
             this.transform.GetChild(1).gameObject.SetActive(false);
             this.transform.GetChild(2).gameObject.SetActive(true);
         } else {Debug.Log("NOT ENOUGHT RUBY");}
@@ -48,7 +50,9 @@ public class ShopItemScript : MonoBehaviour
     public void UseSkin()
     {
         this.transform.GetChild(2).gameObject.SetActive(false);
-        SS.UpdateSelectedSkin(SkinNum);
-        DataBetweenScenes.Skin = SkinNum;
+        SS.UpdateSelectedItem(type, SkinNum);
+        if (type == 0) DataBetweenScenes.Model = SkinNum;
+        else if (type == 1) DataBetweenScenes.Color = SkinNum;
+        else if (type == 2) DataBetweenScenes.Image = SkinNum;
     }
 }

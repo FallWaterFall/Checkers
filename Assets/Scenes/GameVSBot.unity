@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 54058373}
   m_Layer: 0
   m_Name: F2
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 84273742}
   m_Layer: 0
   m_Name: C1
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 89785283}
   m_Layer: 0
   m_Name: F8
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 170400683}
   m_Layer: 0
   m_Name: C5
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 177074283}
   m_Layer: 0
   m_Name: B6
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1512,7 +1512,7 @@ GameObject:
   - component: {fileID: 330157141}
   m_Layer: 0
   m_Name: H8
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1622,7 +1622,7 @@ GameObject:
   - component: {fileID: 351945856}
   m_Layer: 0
   m_Name: F6
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1732,7 +1732,7 @@ GameObject:
   - component: {fileID: 352542317}
   m_Layer: 0
   m_Name: H6
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2196,7 +2196,7 @@ GameObject:
   - component: {fileID: 439268352}
   m_Layer: 0
   m_Name: C3
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2674,7 +2674,7 @@ GameObject:
   - component: {fileID: 562484478}
   m_Layer: 0
   m_Name: A7
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2894,7 +2894,7 @@ GameObject:
   - component: {fileID: 626217134}
   m_Layer: 0
   m_Name: E5
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3114,7 +3114,7 @@ GameObject:
   - component: {fileID: 663018248}
   m_Layer: 0
   m_Name: D2
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3412,6 +3412,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: 30, z: 0}
+--- !u!1 &705810581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 705810583}
+  - component: {fileID: 705810582}
+  m_Layer: 0
+  m_Name: TestClickHadle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &705810582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705810581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a456b96b2560b41949a7e2182e8bf498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commonMaterial: {fileID: 2100000, guid: cc70cd4b367a54abaa42de0ea4174c92, type: 2}
+--- !u!4 &705810583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705810581}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &746671605
 GameObject:
   m_ObjectHideFlags: 0
@@ -3537,7 +3581,7 @@ GameObject:
   - component: {fileID: 761535773}
   m_Layer: 0
   m_Name: G3
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3647,7 +3691,7 @@ GameObject:
   - component: {fileID: 772363801}
   m_Layer: 0
   m_Name: B4
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3757,7 +3801,7 @@ GameObject:
   - component: {fileID: 789184337}
   m_Layer: 0
   m_Name: G1
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3977,7 +4021,7 @@ GameObject:
   - component: {fileID: 823306444}
   m_Layer: 0
   m_Name: G5
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4235,7 +4279,7 @@ GameObject:
   - component: {fileID: 900154990}
   m_Layer: 0
   m_Name: F4
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4473,7 +4517,7 @@ GameObject:
   - component: {fileID: 978645936}
   m_Layer: 0
   m_Name: D4
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4718,7 +4762,7 @@ GameObject:
   - component: {fileID: 1081941620}
   m_Layer: 0
   m_Name: E3
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4866,7 +4910,7 @@ GameObject:
   - component: {fileID: 1205031484}
   m_Layer: 0
   m_Name: B2
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5078,7 +5122,7 @@ GameObject:
   - component: {fileID: 1226201691}
   m_Layer: 0
   m_Name: A3
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5381,7 +5425,7 @@ GameObject:
   - component: {fileID: 1321885004}
   m_Layer: 0
   m_Name: D8
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5491,7 +5535,7 @@ GameObject:
   - component: {fileID: 1324119202}
   m_Layer: 0
   m_Name: C7
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5711,7 +5755,7 @@ GameObject:
   - component: {fileID: 1361024024}
   m_Layer: 0
   m_Name: D6
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5821,7 +5865,7 @@ GameObject:
   - component: {fileID: 1377976497}
   m_Layer: 0
   m_Name: A1
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6087,7 +6131,7 @@ GameObject:
   - component: {fileID: 1446299575}
   m_Layer: 0
   m_Name: E7
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6307,7 +6351,7 @@ GameObject:
   - component: {fileID: 1514538780}
   m_Layer: 0
   m_Name: H2
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6417,7 +6461,7 @@ GameObject:
   - component: {fileID: 1550077784}
   m_Layer: 0
   m_Name: H4
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6675,7 +6719,7 @@ GameObject:
   - component: {fileID: 1597973570}
   m_Layer: 0
   m_Name: E1
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7216,7 +7260,7 @@ GameObject:
   - component: {fileID: 1740949763}
   m_Layer: 0
   m_Name: B8
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7511,7 +7555,7 @@ GameObject:
   - component: {fileID: 1770521682}
   m_Layer: 0
   m_Name: G7
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8294,7 +8338,6 @@ MonoBehaviour:
   onSelectChoiseMaterial: {fileID: 2100000, guid: 7ad2b6270e9744393989599aa17c2fdb, type: 2}
   whiteStonesObj: {fileID: 1252213552}
   MenuCanvas: {fileID: 1209626682}
-  CanSelectStone: []
 --- !u!114 &2008057148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8315,6 +8358,17 @@ MonoBehaviour:
   enemyStoneObj:
   - {fileID: 2385305497218070629, guid: cfd3e2286161e4cb9aa93bcfb7775c5d, type: 3}
   - {fileID: 8936940308101733637, guid: 0f57b96126ab34b79a0d4da7d5dfc08f, type: 3}
+  AllyStoneColor:
+  - serializedVersion: 2
+    rgba: 4292730333
+  - serializedVersion: 2
+    rgba: 4286238606
+  - serializedVersion: 2
+    rgba: 4291787399
+  - serializedVersion: 2
+    rgba: 4289549455
+  - serializedVersion: 2
+    rgba: 4284191176
   boardSize: 8
 --- !u!1 &2008920431
 GameObject:
@@ -8685,7 +8739,7 @@ GameObject:
   - component: {fileID: 2084210879}
   m_Layer: 0
   m_Name: A5
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

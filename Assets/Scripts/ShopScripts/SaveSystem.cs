@@ -25,19 +25,27 @@ public static class SaveSystem
             file.Close();
             return newSaveData;
         }
-        else return new SaveData(10, new List<int>(), 0);
+        else return new SaveData(10, new List<int>(), new List<int>(), new List<int>(), 0, 0, 0);
     } 
 }
 [System.Serializable]
 public class SaveData
 {
     public int moneyAmount;
-    public List<int> UnlockedSkins;
-    public int selectedSkin;
-    public SaveData(int _moneyAmount, List<int> _UnlockedSkins, int _selectedSkin)
+    public List<int> UnlockedModels;
+    public List<int> UnlockedColors;
+    public List<int> UnlockedImages;
+    public int selectedModel;
+    public int selectedColor;
+    public int selectedImage;
+    public SaveData(int _moneyAmount, List<int> _UnlockedModels, List<int> _UnlockedColors, List<int> _UnlockedImages, int _selectedModel, int _selectedColor, int _selectedImage)
     {
         moneyAmount = _moneyAmount;
-        UnlockedSkins = _UnlockedSkins;
-        selectedSkin = _selectedSkin;
+        UnlockedModels = _UnlockedModels;
+        UnlockedColors = _UnlockedColors;
+        UnlockedImages = _UnlockedImages;
+        selectedModel = _selectedModel;
+        selectedColor = _selectedColor;
+        selectedImage = _selectedImage;
     }
 }

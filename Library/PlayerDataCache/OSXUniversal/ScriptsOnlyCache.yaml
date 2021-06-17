@@ -3,15 +3,14 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - BoardScript
     - CameraRotatorScript
+    - ClickHandle
     - EnemyAI
     - InstantiateStones
-    - KingStoneScript
     - MenuScript
     - MoneyShowScript
     - ShopItemScript
     - ShopScript
     - SlotScript
-    - StoneScript
     - WhiteStonesHandle
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -79,31 +78,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2030}
     - Class: 114
-      Script: {instanceID: 2412}
-    - Class: 114
       Script: {instanceID: 2476}
     - Class: 114
       Script: {instanceID: 2672}
     - Class: 114
-      Script: {instanceID: 2798}
+      Script: {instanceID: 2928}
     - Class: 114
-      Script: {instanceID: 2932}
+      Script: {instanceID: 2974}
     - Class: 114
-      Script: {instanceID: 2978}
+      Script: {instanceID: 4336}
     - Class: 114
-      Script: {instanceID: 4758}
+      Script: {instanceID: 4756}
     - Class: 114
-      Script: {instanceID: 5286}
+      Script: {instanceID: 5284}
     - Class: 114
-      Script: {instanceID: 5432}
+      Script: {instanceID: 5430}
     - Class: 114
-      Script: {instanceID: 5732}
+      Script: {instanceID: 5730}
     - Class: 114
-      Script: {instanceID: 5962}
+      Script: {instanceID: 5960}
     - Class: 114
-      Script: {instanceID: 6176}
+      Script: {instanceID: 6174}
     - Class: 114
-      Script: {instanceID: 7140}
+      Script: {instanceID: 7138}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -166,31 +163,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2080}
     - Class: 114
-      Script: {instanceID: 2412}
-    - Class: 114
       Script: {instanceID: 2476}
     - Class: 114
       Script: {instanceID: 2672}
     - Class: 114
-      Script: {instanceID: 2798}
+      Script: {instanceID: 2928}
     - Class: 114
-      Script: {instanceID: 2932}
+      Script: {instanceID: 3872}
     - Class: 114
-      Script: {instanceID: 3876}
+      Script: {instanceID: 4106}
     - Class: 114
-      Script: {instanceID: 4110}
+      Script: {instanceID: 4756}
     - Class: 114
-      Script: {instanceID: 4758}
+      Script: {instanceID: 5058}
     - Class: 114
-      Script: {instanceID: 5060}
+      Script: {instanceID: 5284}
     - Class: 114
-      Script: {instanceID: 5286}
+      Script: {instanceID: 5430}
     - Class: 114
-      Script: {instanceID: 5432}
+      Script: {instanceID: 5730}
     - Class: 114
-      Script: {instanceID: 5732}
-    - Class: 114
-      Script: {instanceID: 7272}
+      Script: {instanceID: 7270}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -239,27 +232,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2672}
     - Class: 114
-      Script: {instanceID: 2932}
+      Script: {instanceID: 2928}
     - Class: 114
-      Script: {instanceID: 3654}
+      Script: {instanceID: 3650}
     - Class: 114
-      Script: {instanceID: 3722}
+      Script: {instanceID: 3718}
     - Class: 114
-      Script: {instanceID: 4690}
+      Script: {instanceID: 4688}
     - Class: 114
-      Script: {instanceID: 4758}
+      Script: {instanceID: 4756}
     - Class: 114
-      Script: {instanceID: 5286}
+      Script: {instanceID: 5284}
     - Class: 114
-      Script: {instanceID: 5432}
+      Script: {instanceID: 5430}
     - Class: 114
-      Script: {instanceID: 5732}
+      Script: {instanceID: 5730}
     - Class: 114
-      Script: {instanceID: 5740}
+      Script: {instanceID: 5738}
     - Class: 114
-      Script: {instanceID: 6716}
+      Script: {instanceID: 6714}
     - Class: 114
-      Script: {instanceID: 7272}
+      Script: {instanceID: 7270}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -315,7 +308,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 5be22ec63c9253c90541ab6ae0639762
+      Hash: 42921adf336826ec2c0fe4f27f2fc091
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ShopScript
@@ -327,7 +320,7 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 3a7ce48da649b592b91367b6b945485c
+      Hash: 0458f894d13d81ecbfeb9cd10b267a31
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: InstantiateStones
@@ -493,12 +486,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: TestResultRendererCallback
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: StoneScript
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -721,6 +708,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerClickMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: c516796a5cff94b54fb4294a08aeb68e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ClickHandle
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1083,7 +1076,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 6122d4e36141cb9530976758db18e07c
+      Hash: dd07e9322631c2cc3a4ff247f5e78368
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BoardScript

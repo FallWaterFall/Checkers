@@ -3,11 +3,14 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - BoardScript
     - CameraRotatorScript
+    - ClickHandle
     - EnemyAI
-    - KingStoneScript
+    - InstantiateStones
     - MenuScript
+    - MoneyShowScript
+    - ShopItemScript
+    - ShopScript
     - SlotScript
-    - StoneScript
     - WhiteStonesHandle
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -33,7 +36,11 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
   sceneClasses:
     Assets/Scenes/GameVSBot.unity:
     - Class: 1
@@ -65,35 +72,35 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1540}
+      Script: {instanceID: 1502}
     - Class: 114
-      Script: {instanceID: 2026}
+      Script: {instanceID: 1722}
     - Class: 114
-      Script: {instanceID: 2408}
+      Script: {instanceID: 2030}
     - Class: 114
-      Script: {instanceID: 2472}
+      Script: {instanceID: 2476}
     - Class: 114
-      Script: {instanceID: 2668}
-    - Class: 114
-      Script: {instanceID: 2794}
+      Script: {instanceID: 2672}
     - Class: 114
       Script: {instanceID: 2928}
     - Class: 114
       Script: {instanceID: 2974}
     - Class: 114
-      Script: {instanceID: 4748}
+      Script: {instanceID: 4336}
     - Class: 114
-      Script: {instanceID: 5276}
+      Script: {instanceID: 4756}
     - Class: 114
-      Script: {instanceID: 5422}
+      Script: {instanceID: 5284}
     - Class: 114
-      Script: {instanceID: 5722}
+      Script: {instanceID: 5430}
     - Class: 114
-      Script: {instanceID: 5952}
+      Script: {instanceID: 5730}
     - Class: 114
-      Script: {instanceID: 6166}
+      Script: {instanceID: 5960}
     - Class: 114
-      Script: {instanceID: 7130}
+      Script: {instanceID: 6174}
+    - Class: 114
+      Script: {instanceID: 7138}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -152,31 +159,31 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1540}
+      Script: {instanceID: 1502}
     - Class: 114
-      Script: {instanceID: 2076}
+      Script: {instanceID: 2080}
     - Class: 114
-      Script: {instanceID: 2408}
+      Script: {instanceID: 2476}
     - Class: 114
-      Script: {instanceID: 2472}
-    - Class: 114
-      Script: {instanceID: 2668}
+      Script: {instanceID: 2672}
     - Class: 114
       Script: {instanceID: 2928}
     - Class: 114
-      Script: {instanceID: 3868}
+      Script: {instanceID: 3872}
     - Class: 114
-      Script: {instanceID: 4102}
+      Script: {instanceID: 4106}
     - Class: 114
-      Script: {instanceID: 4748}
+      Script: {instanceID: 4756}
     - Class: 114
-      Script: {instanceID: 5050}
+      Script: {instanceID: 5058}
     - Class: 114
-      Script: {instanceID: 5276}
+      Script: {instanceID: 5284}
     - Class: 114
-      Script: {instanceID: 5422}
+      Script: {instanceID: 5430}
     - Class: 114
-      Script: {instanceID: 5722}
+      Script: {instanceID: 5730}
+    - Class: 114
+      Script: {instanceID: 7270}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -197,19 +204,84 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
+    Assets/Scenes/ShopScene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1502}
+    - Class: 114
+      Script: {instanceID: 1684}
+    - Class: 114
+      Script: {instanceID: 2476}
+    - Class: 114
+      Script: {instanceID: 2672}
+    - Class: 114
+      Script: {instanceID: 2928}
+    - Class: 114
+      Script: {instanceID: 3650}
+    - Class: 114
+      Script: {instanceID: 3718}
+    - Class: 114
+      Script: {instanceID: 4688}
+    - Class: 114
+      Script: {instanceID: 4756}
+    - Class: 114
+      Script: {instanceID: 5284}
+    - Class: 114
+      Script: {instanceID: 5430}
+    - Class: 114
+      Script: {instanceID: 5730}
+    - Class: 114
+      Script: {instanceID: 5738}
+    - Class: 114
+      Script: {instanceID: 6714}
+    - Class: 114
+      Script: {instanceID: 7270}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
   scriptHashData:
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UIElements
-    className: PanelRaycaster
   - hash:
       serializedVersion: 2
       Hash: a6e561615949734e9f12f9b61661f43e
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UIElements
+    className: PanelRaycaster
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -236,10 +308,22 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: 42921adf336826ec2c0fe4f27f2fc091
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ShopScript
+  - hash:
+      serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Shadow
+  - hash:
+      serializedVersion: 2
+      Hash: 0458f894d13d81ecbfeb9cd10b267a31
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InstantiateStones
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -254,7 +338,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 9ffe13a2bf2c7a0c11c6fd5cea12696b
+      Hash: 54fcf6503daf550faf07ef403a2524f7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyAI
@@ -405,12 +489,6 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: StoneScript
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnDropdownValueChangedMessageListener
@@ -543,6 +621,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MoneyShowScript
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnCollisionStay2DMessageListener
@@ -624,6 +708,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerClickMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: c516796a5cff94b54fb4294a08aeb68e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ClickHandle
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -986,10 +1076,16 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 6122d4e36141cb9530976758db18e07c
+      Hash: dd07e9322631c2cc3a4ff247f5e78368
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BoardScript
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ShopItemScript
   - hash:
       serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
@@ -1024,4 +1120,5 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MenuScene.unity
   - Assets/Scenes/GameVSBot.unity
-  playerPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Checker3DWin/3DProject.exe
+  - Assets/Scenes/ShopScene.unity
+  playerPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject/Checkers3DWindowsBeta1.0/Checkers3D.exe

@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
             BS.SetOcupied((int)enemyStones[i].transform.position.x, (int)enemyStones[i].transform.position.z, Color.Black);
         }
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (moveAnimObj != null) MoveStoneAnim();
     }
@@ -101,7 +101,6 @@ public class EnemyAI : MonoBehaviour
         {
             yield return new WaitForSeconds(moveAmount * 0.51f);
             BS.FindTarget();
-            BS.SetCanSelect(true);
         }
     }
     public void MakeMoveAnim(int endX, int endZ)

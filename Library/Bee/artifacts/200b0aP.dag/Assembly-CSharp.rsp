@@ -285,6 +285,7 @@
 -r:"Library/Bee/artifacts/200b0aP.dag/Unity.VisualScripting.Flow.ref.dll"
 -r:"Library/Bee/artifacts/200b0aP.dag/Unity.VisualScripting.State.ref.dll"
 -r:"Library/Bee/artifacts/200b0aP.dag/UnityEngine.UI.ref.dll"
+"Assets/ClickHandle.cs"
 "Assets/Scripts/BoardScript.cs"
 "Assets/Scripts/CameraRotatorScript.cs"
 "Assets/Scripts/DataBetweenScenes.cs"
@@ -297,7 +298,6 @@
 "Assets/Scripts/ShopScripts/ShopItemScript.cs"
 "Assets/Scripts/ShopScripts/ShopScript.cs"
 "Assets/Scripts/SlotScript.cs"
-"Assets/Scripts/StoneScript.cs"
 "Assets/Scripts/WhiteStonesHandle.cs"
 -langversion:8.0
 
