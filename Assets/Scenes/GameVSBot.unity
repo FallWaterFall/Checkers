@@ -3423,7 +3423,7 @@ GameObject:
   - component: {fileID: 705810583}
   - component: {fileID: 705810582}
   m_Layer: 0
-  m_Name: TestClickHadle
+  m_Name: ClickHadle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5261,7 +5261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
-  KingObj: {fileID: 437157692587578972, guid: 93cc4fb1395ca4a9da014badb9e221b6, type: 3}
+  KingObj: {fileID: 8654454734539270252, guid: bb35aafba10e54bf2be43e29d102a09d, type: 3}
 --- !u!1 &1294152288
 GameObject:
   m_ObjectHideFlags: 0
@@ -6003,7 +6003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27fbde5bff79467695b393bac9220ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyKingObj: {fileID: 4950291849459834730, guid: d239e7551ead54a69b1490488a2b8bc4, type: 3}
+  enemyKingObj: {fileID: 2547625042381273041, guid: 6b599f1036cf2417cafa5016329763e7, type: 3}
   enemyStones: []
   enemyKingStones: []
 --- !u!1 &1435078610
@@ -7211,10 +7211,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c8adc7dcc5dfa459ba51c2d0d81a3055, type: 2}
+    - target: {fileID: -5477749408508380018, guid: 009429e82303941508bdf95181d46055, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 110
+      objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: 009429e82303941508bdf95181d46055, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c8adc7dcc5dfa459ba51c2d0d81a3055, type: 2}
+    - target: {fileID: -3542852092398272455, guid: 009429e82303941508bdf95181d46055, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: -3274006528333456403, guid: 009429e82303941508bdf95181d46055, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -2093772787462966335, guid: 009429e82303941508bdf95181d46055, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4
+      objectReference: {fileID: 0}
     - target: {fileID: -1806680513116206669, guid: 009429e82303941508bdf95181d46055, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -7223,6 +7239,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c8adc7dcc5dfa459ba51c2d0d81a3055, type: 2}
+    - target: {fileID: -1255605710908113952, guid: 009429e82303941508bdf95181d46055, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 110
+      objectReference: {fileID: 0}
     - target: {fileID: -1120989108687609925, guid: 009429e82303941508bdf95181d46055, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -7238,6 +7258,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 009429e82303941508bdf95181d46055, type: 3}
       propertyPath: m_Name
       value: BoardBorder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083501151425157549, guid: 009429e82303941508bdf95181d46055, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306643203051859313, guid: 009429e82303941508bdf95181d46055, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865064391339405807, guid: 009429e82303941508bdf95181d46055, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 6745302439343835087, guid: 009429e82303941508bdf95181d46055, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -8338,6 +8370,7 @@ MonoBehaviour:
   onSelectChoiseMaterial: {fileID: 2100000, guid: 7ad2b6270e9744393989599aa17c2fdb, type: 2}
   whiteStonesObj: {fileID: 1252213552}
   MenuCanvas: {fileID: 1209626682}
+  MoveSpeed: 0.52
 --- !u!114 &2008057148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8353,11 +8386,11 @@ MonoBehaviour:
   allyHadle: {fileID: 1252213553}
   enemyHandle: {fileID: 1419584069}
   allyStoneObj:
-  - {fileID: 7225790793693192519, guid: 67a9fceee7b4d47219fcd87e61d3bd75, type: 3}
-  - {fileID: 8691961630202272921, guid: 8df083015d9f24e48989de8979e40697, type: 3}
+  - {fileID: 1988100473956236398, guid: 67a9fceee7b4d47219fcd87e61d3bd75, type: 3}
+  - {fileID: 8237497269572453477, guid: 8df083015d9f24e48989de8979e40697, type: 3}
   enemyStoneObj:
-  - {fileID: 2385305497218070629, guid: cfd3e2286161e4cb9aa93bcfb7775c5d, type: 3}
-  - {fileID: 8936940308101733637, guid: 0f57b96126ab34b79a0d4da7d5dfc08f, type: 3}
+  - {fileID: 8250724664039795540, guid: 1fd1b7c6e3180464b9fa6e7be7e1e4d8, type: 3}
+  - {fileID: 3884714121367713653, guid: 0f57b96126ab34b79a0d4da7d5dfc08f, type: 3}
   AllyStoneColor:
   - serializedVersion: 2
     rgba: 4292730333

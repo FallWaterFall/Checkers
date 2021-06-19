@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     private GameObject moveAnimObj = null;
     private float moveAnimDeltaX, moveAnimDeltaZ, moveAnimEndX, moveAnimEndZ;
     private int moveAnimDirection;
+    private bool IsChangedOnKing = false;
     private void Start()
     {
         GameObject obj = GameObject.Find("Board");
@@ -28,8 +29,10 @@ public class EnemyAI : MonoBehaviour
     public IEnumerator OpponentMove()
     {
         bool isMoveMake = false;
+        IsChangedOnKing = false;
         int moveAmount = 0;
 
+        //Chek if Enemy King can attack
         if (enemyKingStones.Count > 0)
         {
             for (int i = 0; i < enemyKingStones.Count; i++)
@@ -41,17 +44,18 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
-
+        //Chek if Enemy Stone can attack
         if (!isMoveMake && enemyStones.Count > 0)
         {
             for (int i = 0; i < enemyStones.Count; i++)
             {
                 if (BS.CheckEnemyAttack(enemyStones[i]) == true)
                 {
-                    yield return new WaitForSeconds(0.51f);
+                    yield return new WaitForSeconds(BS.MoveSpeed);
                     while (BS.CheckEnemyAttack(enemyStones[i]) == true)
                     {
-                        yield return new WaitForSeconds(0.51f);
+                        yield return new WaitForSeconds(BS.MoveSpeed);
+                        if (IsChangedOnKing) break;
                         Debug.Log("EnemyCombo");
                     }
                     isMoveMake = true;
@@ -59,7 +63,7 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
-
+        //Chek if Enemy Stone can move
         if (!isMoveMake && enemyStones.Count > 0)
         {
             for (int i = 0; i < 200; i++)
@@ -76,7 +80,7 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
-
+        //Chek if Enemy King can move
         if (!isMoveMake && enemyKingStones.Count > 0)
         {
             for (int i = 0; i < 20; i++)
@@ -92,14 +96,18 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        if (!isMoveMake && enemyKingStones.Count + enemyStones.Count > 0)
+        if (IsChangedOnKing)
+        {
+            StartCoroutine(OpponentMove());
+        }
+        else if (!isMoveMake && enemyKingStones.Count + enemyStones.Count > 0)
         {
             Debug.Log("Enemy stones can't move");
             BS.EndGame(true);
         }
         else
         {
-            yield return new WaitForSeconds(moveAmount * 0.51f);
+            yield return new WaitForSeconds(moveAmount * BS.MoveSpeed);
             BS.FindTarget();
         }
     }
@@ -175,10 +183,11 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("Change to enemy king");
         var obj = enemyStones[i];
         enemyStones.Remove(obj);
-        var newObj = Instantiate(enemyKingObj, obj.transform.position, Quaternion.Euler(-90, 0, 0));
+        var newObj = Instantiate(enemyKingObj, obj.transform.position, Quaternion.identity);
         Destroy(obj);
         newObj.transform.SetParent(this.transform);
         enemyKingStones.Add(newObj);
+        IsChangedOnKing = true;
     }
     private int FindIndexOfObj(GameObject obj)
     {

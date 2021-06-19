@@ -322,6 +322,8 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/ClickHandle.cs"
+"Assets/ColorApplier.cs"
+"Assets/ObjectRotator.cs"
 "Assets/Scripts/BoardScript.cs"
 "Assets/Scripts/CameraRotatorScript.cs"
 "Assets/Scripts/DataBetweenScenes.cs"

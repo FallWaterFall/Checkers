@@ -21,11 +21,7 @@ public class InstantiateStones : MonoBehaviour
             {
                 var allyObj = Instantiate(allyStoneObj[ModelNum], new Vector3(i * 2 + j % 2, 0.2f, j), allyStoneObj[ModelNum].transform.rotation);
                 
-                Material[] matArray = new Material[2];
-                matArray[0] = allyObj.GetComponent<Renderer>().material;
-                matArray[1] = matArray[0];
-                matArray[1].color = AllyStoneColor[ColorNum];
-                allyObj.GetComponent<Renderer>().materials = matArray;
+                ColorApplier.ApplyNewColor(allyObj, AllyStoneColor[ColorNum]);
 
                 allyObj.transform.SetParent(allyHadle);
                 var enemyObj = Instantiate(enemyStoneObj[ModelNum], new Vector3(i * 2 + (j + 1) % 2, 0.2f, boardSize - j - 1), enemyStoneObj[ModelNum].transform.rotation);

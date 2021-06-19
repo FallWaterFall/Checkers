@@ -67,8 +67,8 @@ public class WhiteStonesHandle : MonoBehaviour
         moveAnimObj = SelectedStone.obj;
         moveAnimEndX = endX;
         moveAnimEndZ = endZ;
-        moveAnimDeltaX = (endX - SelectedStone.obj.transform.position.x) / 50.0f;
-        moveAnimDeltaZ = (endZ - SelectedStone.obj.transform.position.z) / 50.0f;
+        moveAnimDeltaX = (endX - SelectedStone.obj.transform.position.x) / 25f;
+        moveAnimDeltaZ = (endZ - SelectedStone.obj.transform.position.z) / 25f;
 
         if (SelectedStone.obj.transform.position.x < endX) moveAnimDirection = 0;
         else moveAnimDirection = 1;
@@ -96,7 +96,7 @@ public class WhiteStonesHandle : MonoBehaviour
     private void ChangeStoneOnKing()
     {
         int i;
-        var king = Instantiate(KingObj, SelectedStone.obj.transform.position, Quaternion.Euler(-90, 0, 0));
+        var king = Instantiate(KingObj, SelectedStone.obj.transform.position, Quaternion.identity);
         king.transform.SetParent(this.transform);
 
         for (i = 0; i < whiteStones.Count; i++)
@@ -112,14 +112,13 @@ public class WhiteStonesHandle : MonoBehaviour
     {
         for (int i = 0; i < whiteStones.Count; i++)
         {
-            SelectStone(whiteStones[i]);
+            //SelectStone(whiteStones[i]);
             if (whiteStones[i].gameObject.tag == "AllyStone")
                 if (BS.SerchCellsForAttack((int)whiteStones[i].transform.position.x, (int)whiteStones[i].transform.position.z)) BS.AddInCanSelectList(whiteStones[i]);
             if (whiteStones[i].gameObject.tag == "KingAllyStone")
                 if (BS.SerchCellsForKingAttack((int)whiteStones[i].transform.position.x, (int)whiteStones[i].transform.position.z)) BS.AddInCanSelectList(whiteStones[i]);
         }
         if (SelectedStone.obj != null) SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
-        
         SelectedStone.obj = null;
     }
     public void FindAndDelete(int x, int z)

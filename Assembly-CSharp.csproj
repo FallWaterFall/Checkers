@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\InstantiateStones.cs" />
      <Compile Include="Assets\Scripts\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\KingStoneScript.cs" />
+     <Compile Include="Assets\ObjectRotator.cs" />
      <Compile Include="Assets\Scripts\CameraRotatorScript.cs" />
      <Compile Include="Assets\Scripts\DataBetweenScenes.cs" />
      <Compile Include="Assets\Scripts\ShopScripts\MoneyShowScript.cs" />
@@ -48,9 +49,9 @@
      <Compile Include="Assets\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\WhiteStonesHandle.cs" />
      <Compile Include="Assets\Scripts\SlotScript.cs" />
+     <Compile Include="Assets\ColorApplier.cs" />
      <Compile Include="Assets\Scripts\BoardScript.cs" />
      <Compile Include="Assets\Scripts\ShopScripts\ShopItemScript.cs" />
-     <Compile Include="Assets\InShopStoneRepresentation.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

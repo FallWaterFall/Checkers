@@ -126,35 +126,24 @@ public class ShopScript : MonoBehaviour
         }
         UpdateRepresentation(type);
     }
-    private void ReCreateRepObj()
+    private GameObject ReCreateRepObj()
     {
         var repObj = Instantiate(ModelsObjList[data.selectedModel]);
         repObj.transform.SetParent(RepresentationObj.transform);
-        repObj.transform.localPosition = new Vector3(0, 0, -65); 
-        if (data.selectedModel == 0)
-        {
-            repObj.transform.eulerAngles = new Vector3(-35, 0, 0);
-            repObj.transform.localScale = new Vector3(100, 20, 100);
-        }
-        if (data.selectedModel == 1)
-        {
-            repObj.transform.eulerAngles = new Vector3(-125, 0, 0);
-            repObj.transform.localScale = new Vector3(10000, 10000, 2000);
-        }
-        repObj.GetComponent<Renderer>().material.color = ColorsList[data.selectedColor];
+        repObj.transform.localPosition = new Vector3(0, 0, 0);
+        repObj.transform.eulerAngles = new Vector3(-35, 0, 0);
+        repObj.transform.localScale = new Vector3(100, 100, 100);
+        return repObj;
     }
     private void UpdateRepresentation(int type)
     {
         var repObj = RepresentationObj.transform.GetChild(0).gameObject;
 
-        if (type == 0)
+        if (type == 0 || type == 1)
         {
             Destroy(repObj);
-            ReCreateRepObj();
-        }
-        if (type == 1)
-        {
-            repObj.GetComponent<Renderer>().material.color = ColorsList[CurSelectedColor];
+            repObj = ReCreateRepObj();
+            ColorApplier.ApplyNewColor(repObj, ColorsList[data.selectedColor]);
         }
         if (type == 2)
         {

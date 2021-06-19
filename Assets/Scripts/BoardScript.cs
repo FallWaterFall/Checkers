@@ -26,6 +26,7 @@ public class BoardScript : MonoBehaviour
     [SerializeField] private Material onSelectChoiseMaterial;
     [SerializeField] private GameObject whiteStonesObj;
     [SerializeField] private GameObject MenuCanvas;
+    public float MoveSpeed = 0.51f;
     private bool CanvasActivity = false;
     private WhiteStonesHandle WSH;
     private EnemyAI EAI;
@@ -454,7 +455,7 @@ public class BoardScript : MonoBehaviour
         ClearSelection();
         CanSelectStone.Clear();
         
-        yield return new WaitForSeconds(1.05f);
+        yield return new WaitForSeconds(MoveSpeed);
 
         DestroyEnemyStonesOnTheWay(startV.x, startV.y, endX, endZ);
         
@@ -679,25 +680,25 @@ public class BoardScript : MonoBehaviour
         if (type == 1)
         {
             EAI.MakeMoveAnim(tempX + 2, tempZ + 2, enemyStone);
-            whiteStonesObj.GetComponent<WhiteStonesHandle>().FindAndDelete(tempX + 1, tempZ + 1);
+            WSH.FindAndDelete(tempX + 1, tempZ + 1);
             SetOcupied(tempX + 2, tempZ + 2, Color.Black);
         }
         else if (type == 2)
         {
             EAI.MakeMoveAnim(tempX - 2, tempZ + 2, enemyStone);
-            whiteStonesObj.GetComponent<WhiteStonesHandle>().FindAndDelete(tempX - 1, tempZ + 1);
+            WSH.FindAndDelete(tempX - 1, tempZ + 1);
             SetOcupied(tempX - 2, tempZ + 2, Color.Black);
         }
         else if (type == 3)
         {
             EAI.MakeMoveAnim(tempX + 2, tempZ - 2, enemyStone);
-            whiteStonesObj.GetComponent<WhiteStonesHandle>().FindAndDelete(tempX + 1, tempZ - 1);
+            WSH.FindAndDelete(tempX + 1, tempZ - 1);
             SetOcupied(tempX + 2, tempZ - 2, Color.Black);
         }
         else if (type == 4)
         {
             EAI.MakeMoveAnim(tempX - 2, tempZ - 2, enemyStone);
-            whiteStonesObj.GetComponent<WhiteStonesHandle>().FindAndDelete(tempX - 1, tempZ - 1);
+            WSH.FindAndDelete(tempX - 1, tempZ - 1);
             SetOcupied(tempX - 2, tempZ - 2, Color.Black);
         }
     }
@@ -837,8 +838,9 @@ public class BoardScript : MonoBehaviour
     //Level control////////////////////////////////
     public void EndGame(bool win)
     {
-        MenuCanvas.SetActive(true);
+        ClearSelection();
         SetCanSelect(false);
+        MenuCanvas.SetActive(true);
         if (win)
         {
             SaveData data = SaveSystem.Load();
