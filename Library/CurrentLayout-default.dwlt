@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 613}
   m_MaxSize: {x: 18004, y: 18063}
   vertical: 0
-  controlID: 17
+  controlID: 63
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 433, y: 613}
   m_MaxSize: {x: 14003, y: 18063}
   vertical: 1
-  controlID: 18
+  controlID: 64
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_MinSize: {x: 433, y: 492}
   m_MaxSize: {x: 14003, y: 14042}
   vertical: 0
-  controlID: 19
+  controlID: 65
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_MinSize: {x: 231, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 105
+  controlID: 21
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -472,7 +472,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: bce3fffffce3ffff1ce5ffff20e5ffff4ce5ffff54fbffff
+      m_ExpandedIDs: f879ffff387affff5a7bffff5e7bffff887bffff2e7dffff707dffff927effff967effffc07effff1280ffff5480ffff7681ffff7a81ffffa481ffff54fbffffec54000068550000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -534,21 +534,21 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Resources
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Resources
   m_LastFoldersGridSize: 16
   m_LastProjectPath: /Users/glebsobolevsky/Documents/UnityDev/3DProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 56580000
-    m_LastClickedID: 22614
+    m_SelectedIDs: 50580000
+    m_LastClickedID: 22608
     m_ExpandedIDs: 000000005c57000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -621,7 +621,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 11}
+      m_ClientGUIView: {fileID: 0}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -669,9 +669,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.0784123, y: 14.697624, z: -15.248822}
+    m_Target: {x: 3.7541773, y: -19.662832, z: 13.1806755}
     speed: 2
-    m_Value: {x: 3.0784123, y: 14.697624, z: -15.248822}
+    m_Value: {x: 3.7541773, y: -19.662832, z: 13.1806755}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -718,13 +718,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.38880408, y: 0.0010870744, z: -0.00036147144, w: -0.9213807}
+    m_Target: {x: -0.5040614, y: 0.011410508, z: -0.006519862, w: -0.8636359}
     speed: 2
-    m_Value: {x: -0.38878226, y: 0.0010870134, z: -0.00036145115, w: -0.92132896}
+    m_Value: {x: -0.5053266, y: 0.011400044, z: -0.0065365904, w: -0.86282814}
   m_Size:
-    m_Target: 0.6764811
+    m_Target: 16.468561
     speed: 2
-    m_Value: 0.6764811
+    m_Value: 16.468561
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -862,7 +862,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 37928
+  m_LastSelectedObjectID: 21506
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52

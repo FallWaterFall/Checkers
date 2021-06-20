@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class KingStoneScript : MonoBehaviour
 {
-    private WhiteStonesHandle WSH;
+    private AllyStonesHandle WSH;
     private Material commonMaterial;
     private void Start()
     {
         commonMaterial = this.GetComponent<Renderer>().material;
-        WSH = this.transform.GetComponentInParent<WhiteStonesHandle>();
+        WSH = this.transform.GetComponentInParent<AllyStonesHandle>();
     }
     private void Update()
     {

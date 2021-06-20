@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    [SerializeField] private GameObject boardObj;
     [SerializeField] GameObject enemyKingObj;
-    private BoardScript BS;
     [SerializeField] private List<GameObject> enemyStones = new List<GameObject>();
     [SerializeField] private List<GameObject> enemyKingStones = new List<GameObject>();
+    private BoardScript BS;
     private GameObject moveAnimObj = null;
     private float moveAnimDeltaX, moveAnimDeltaZ, moveAnimEndX, moveAnimEndZ;
     private int moveAnimDirection;
     private bool IsChangedOnKing = false;
     private void Start()
     {
-        GameObject obj = GameObject.Find("Board");
-        BS = obj.GetComponent<BoardScript>();
-        for (int i = 0; i < 12; i++)
+        BS = boardObj.GetComponent<BoardScript>();
+        for (int i = 0; i < this.transform.childCount; i++)
         {
             enemyStones.Add(this.transform.GetChild(i).gameObject);
             BS.SetOcupied((int)enemyStones[i].transform.position.x, (int)enemyStones[i].transform.position.z, Color.Black);

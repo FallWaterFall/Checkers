@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AllyStonesHandle
     - BoardScript
     - CameraRotatorScript
     - ClickHandle
@@ -12,7 +13,6 @@ ScriptsOnlyBuild:
     - ShopItemScript
     - ShopScript
     - SlotScript
-    - WhiteStonesHandle
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -356,7 +356,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 54fcf6503daf550faf07ef403a2524f7
+      Hash: 54e4640b51ad1d9bd4576aa2ef1845cc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyAI
@@ -734,7 +734,7 @@ ScriptsOnlyBuild:
     className: UnityOnPointerClickMessageListener
   - hash:
       serializedVersion: 2
-      Hash: c516796a5cff94b54fb4294a08aeb68e
+      Hash: 7960cac51fb36038ec88254130d72af9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ClickHandle
@@ -932,10 +932,10 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 1da40f549dd2b3d75da9be2c867cb411
+      Hash: 903bfcb955e6ff66cb56426f72e13189
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: WhiteStonesHandle
+    className: AllyStonesHandle
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1100,7 +1100,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: f7f924135dd35875d6ba31c62db0877d
+      Hash: 64772825b1ba7822b21581a400eb5ab6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BoardScript

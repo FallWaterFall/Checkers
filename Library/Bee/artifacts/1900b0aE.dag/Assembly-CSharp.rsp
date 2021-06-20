@@ -324,6 +324,7 @@
 "Assets/ClickHandle.cs"
 "Assets/ColorApplier.cs"
 "Assets/ObjectRotator.cs"
+"Assets/Scripts/AllyStonesHandle.cs"
 "Assets/Scripts/BoardScript.cs"
 "Assets/Scripts/CameraRotatorScript.cs"
 "Assets/Scripts/DataBetweenScenes.cs"
@@ -336,7 +337,6 @@
 "Assets/Scripts/ShopScripts/ShopItemScript.cs"
 "Assets/Scripts/ShopScripts/ShopScript.cs"
 "Assets/Scripts/SlotScript.cs"
-"Assets/Scripts/WhiteStonesHandle.cs"
 -langversion:8.0
 
 /deterministic

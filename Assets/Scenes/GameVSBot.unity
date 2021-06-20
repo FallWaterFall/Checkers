@@ -3442,6 +3442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commonMaterial: {fileID: 2100000, guid: cc70cd4b367a54abaa42de0ea4174c92, type: 2}
+  allyStonesObj: {fileID: 1252213552}
+  boardObj: {fileID: 2008057145}
 --- !u!4 &705810583
 Transform:
   m_ObjectHideFlags: 0
@@ -3454,7 +3456,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &746671605
 GameObject:
@@ -4676,7 +4678,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1071137334
 PrefabInstance:
@@ -4687,7 +4689,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a7aa2773c048449a1b59c2113869d904, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7aa2773c048449a1b59c2113869d904, type: 3}
       propertyPath: m_LocalScale.x
@@ -5100,7 +5102,7 @@ RectTransform:
   - {fileID: 327496462}
   - {fileID: 2110965681}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5228,7 +5230,7 @@ GameObject:
   - component: {fileID: 1252213553}
   - component: {fileID: 1252213554}
   m_Layer: 0
-  m_Name: WhiteStones
+  m_Name: AllyStones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5246,7 +5248,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1252213554
 MonoBehaviour:
@@ -5262,6 +5264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
   KingObj: {fileID: 8654454734539270252, guid: bb35aafba10e54bf2be43e29d102a09d, type: 3}
+  boardObj: {fileID: 2008057145}
 --- !u!1 &1294152288
 GameObject:
   m_ObjectHideFlags: 0
@@ -5989,7 +5992,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1419584070
 MonoBehaviour:
@@ -6003,6 +6006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27fbde5bff79467695b393bac9220ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardObj: {fileID: 2008057145}
   enemyKingObj: {fileID: 2547625042381273041, guid: 6b599f1036cf2417cafa5016329763e7, type: 3}
   enemyStones: []
   enemyKingStones: []
@@ -7153,7 +7157,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 009429e82303941508bdf95181d46055, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 009429e82303941508bdf95181d46055, type: 3}
       propertyPath: m_LocalScale.x
@@ -7691,7 +7695,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 87eb43f7b94e64dbd8f6fe3a15a974e4, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87eb43f7b94e64dbd8f6fe3a15a974e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8351,7 +8355,7 @@ Transform:
   - {fileID: 833469845}
   - {fileID: 1145668240}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2008057147
 MonoBehaviour:
@@ -8368,7 +8372,7 @@ MonoBehaviour:
   EnemyAIobj: {fileID: 1419584068}
   onSelectMaterial: {fileID: 2100000, guid: 86747b722352043cbb8861442376fa4d, type: 2}
   onSelectChoiseMaterial: {fileID: 2100000, guid: 7ad2b6270e9744393989599aa17c2fdb, type: 2}
-  whiteStonesObj: {fileID: 1252213552}
+  allyStonesObj: {fileID: 1252213552}
   MenuCanvas: {fileID: 1209626682}
   MoveSpeed: 0.52
 --- !u!114 &2008057148
