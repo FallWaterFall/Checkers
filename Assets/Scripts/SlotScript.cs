@@ -1,24 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SlotScript : MonoBehaviour
 {
-    private BoardScript BS;
     private bool isOcupied = false;
-    [SerializeField] private Color ocupiedColor = Color.Empty;
+    [SerializeField] private StonesColor ocupiedColor = StonesColor.Empty;
     private bool isSelected = false;
     private void Awake()
     {
-        ocupiedColor = Color.Empty;
+        ocupiedColor = StonesColor.Empty;
     }
-    private void Start()
-    {
-        GameObject obj = GameObject.Find("Board");
-        BS = obj.GetComponent<BoardScript>();
-    }
-    public void SetOcupied(bool b, Color color)
+    public void SetOcupied(bool b, StonesColor color)
     {
         isOcupied = b;
         ocupiedColor = color;
@@ -31,7 +24,7 @@ public class SlotScript : MonoBehaviour
     {
         return isSelected;
     }
-    public Color WhatIsColor()
+    public StonesColor WhatIsColor()
     {
         return ocupiedColor;
     }

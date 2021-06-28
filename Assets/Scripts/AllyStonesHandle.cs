@@ -19,7 +19,7 @@ public class AllyStonesHandle : MonoBehaviour
         for (int i = 0; i < this.transform.childCount; i++)
         {
             boardObj = this.transform.GetChild(i).gameObject;
-            BS.SetOcupied((int)boardObj.transform.position.x, (int)boardObj.transform.position.z, Color.White);
+            BS.SetOcupied((int)boardObj.transform.position.x, (int)boardObj.transform.position.z, StonesColor.White);
             
             allyStones.Add(boardObj);
         }
@@ -81,7 +81,7 @@ public class AllyStonesHandle : MonoBehaviour
 
         if ((moveAnimObj.transform.position.x >= moveAnimEndX && moveAnimDirection == 0) || (moveAnimObj.transform.position.x <= moveAnimEndX && moveAnimDirection == 1))
         {
-            moveAnimObj.transform.position = new Vector3(moveAnimEndX, 0.2f , moveAnimEndZ);
+            moveAnimObj.transform.position = new Vector3(moveAnimEndX, moveAnimObj.transform.position.y - 0.2f , moveAnimEndZ);
 
             moveAnimDeltaX = 0;
             moveAnimDeltaZ = 0;
@@ -122,12 +122,13 @@ public class AllyStonesHandle : MonoBehaviour
         if (SelectedStone.obj != null) SelectedStone.obj.GetComponent<Renderer>().material = SelectedStone.objMaterial;
         SelectedStone.obj = null;
     }
-    public void FindAndDelete(int x, int z)
+    public IEnumerator FindAndDelete(int x, int z)
     {
         for (int i = 0; i < allyStones.Count; i++)
         {
             if ((int)allyStones[i].transform.position.x == x && (int)allyStones[i].transform.position.z == z)
             {
+                yield return new WaitForSeconds(0.5f);
                 GameObject obj = allyStones[i];
                 allyStones.Remove(obj);
                 BS.SetUnOcupied((int)obj.transform.position.x, (int)obj.transform.position.z);

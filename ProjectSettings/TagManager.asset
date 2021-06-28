@@ -7,6 +7,9 @@ TagManager:
   - AllyStone
   - KingAllyStone
   - Cell
+  - EnemyStone
+  - KingEnemyStone
+  - Particle
   layers:
   - Default
   - TransparentFX

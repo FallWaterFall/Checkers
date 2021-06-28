@@ -106,6 +106,10 @@
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
 -define:ENABLE_LEGACY_INPUT_MANAGER
+-define:PHOTON_UNITY_NETWORKING
+-define:PUN_2_0_OR_NEWER
+-define:PUN_2_OR_NEWER
+-define:PUN_2_19_OR_NEWER
 -define:PACKAGE_PHYSICS
 -define:PACKAGE_PHYSICS2D
 -define:PACKAGE_TILEMAP
@@ -315,11 +319,12 @@
 -r:"/Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/log4netPlastic.dll"
 -r:"/Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll"
 -r:"/Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/unityplastic.dll"
--r:"/Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.nuget.mono-cecil@1.10.1-preview.1/Mono.Cecil.dll"
 -r:"/Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll"
 -r:"/Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.visualscripting@1.6.1/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll"
 -r:"/Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.visualscripting@1.6.1/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll"
 -r:"/Users/glebsobolevsky/Documents/UnityDev/3DProject/Library/PackageCache/com.unity.visualscripting@1.6.1/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll"
+-r:"Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll"
 "Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventData/AxisEventData.cs"
 "Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventData/BaseEventData.cs"
 "Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventData/PointerEventData.cs"

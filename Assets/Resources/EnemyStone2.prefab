@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 285120525918411687}
   - component: {fileID: 1121878052548551934}
   - component: {fileID: 4826361415505165274}
+  - component: {fileID: -8470853068807581946}
   m_Layer: 0
   m_Name: EnemyStone2
-  m_TagString: Untagged
+  m_TagString: EnemyStone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &-8470853068807581946
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884714121367713653}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 0.3
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.011660762, z: 0}
 --- !u!1 &8059362656310425461
 GameObject:
   m_ObjectHideFlags: 0

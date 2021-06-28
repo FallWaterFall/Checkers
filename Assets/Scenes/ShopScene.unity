@@ -1541,9 +1541,13 @@ MonoBehaviour:
   ModelsList:
   - {fileID: 21300000, guid: edab080d22a6d41579209255c89e3141, type: 3}
   - {fileID: 21300000, guid: fbd521af4d23447e598573cf89e4d3b6, type: 3}
+  - {fileID: 21300000, guid: fbd521af4d23447e598573cf89e4d3b6, type: 3}
+  - {fileID: 21300000, guid: fbd521af4d23447e598573cf89e4d3b6, type: 3}
   ModelsObjList:
   - {fileID: 1988100473956236398, guid: 67a9fceee7b4d47219fcd87e61d3bd75, type: 3}
   - {fileID: 8237497269572453477, guid: 8df083015d9f24e48989de8979e40697, type: 3}
+  - {fileID: 2003728248612793544, guid: 53bd16d2bcc9b4eabba2182aae33bb29, type: 3}
+  - {fileID: 1017076829496544340, guid: dd6a358f25577403dabdc5a22e967a5a, type: 3}
   ColorsList:
   - serializedVersion: 2
     rgba: 4294967295

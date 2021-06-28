@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum Color
+public enum StonesColor
 {
     Empty,
     White,
@@ -95,7 +95,7 @@ public class BoardScript : MonoBehaviour
 
         for (int leftX = x - 1, tempZ = z - 1; tempZ >= 0; leftX--, tempZ--)
         {
-            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
 
             if (IsCellExist(leftX, tempZ) && Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied() && IsCellExist(leftX - 1, tempZ - 1) && Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied()) break;
 
@@ -109,7 +109,7 @@ public class BoardScript : MonoBehaviour
 
         for (int rightX = x + 1, tempZ = z - 1; tempZ >= 0; rightX++, tempZ--)
         {
-            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
             
             if (IsCellExist(rightX, tempZ) && Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied() && IsCellExist(rightX + 1, tempZ - 1) && Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied()) break;
 
@@ -123,7 +123,7 @@ public class BoardScript : MonoBehaviour
 
         for (int leftX = x - 1, tempZ = z + 1; tempZ < 8; leftX--, tempZ++)
         {
-            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
             
             if (IsCellExist(leftX, tempZ) && Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied() && IsCellExist(leftX - 1, tempZ + 1) && Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied()) break;
 
@@ -137,7 +137,7 @@ public class BoardScript : MonoBehaviour
 
         for (int rightX = x + 1, tempZ = z + 1; tempZ < 8; rightX++, tempZ++)
         {
-            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
             
             if (IsCellExist(rightX, tempZ) && Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied() && IsCellExist(rightX + 1, tempZ + 1) && Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied()) break;
 
@@ -154,13 +154,13 @@ public class BoardScript : MonoBehaviour
         CanAttack = false;
         if (IsZExist(z + 2))
         {
-            if (IsXExist(x + 2) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x + 2) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
                 CurSelectedCells.Add(new SelectedItems(Grid[x + 2, z + 2], Grid[x + 2, z + 2].GetComponent<Renderer>().material));
                 Grid[x + 2, z + 2].GetComponent<Renderer>().material = onSelectChoiseMaterial;
                 CanAttack = true;
             }
-            if (IsXExist(x - 2) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x - 2) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
                 CurSelectedCells.Add(new SelectedItems(Grid[x - 2, z + 2], Grid[x - 2, z + 2].GetComponent<Renderer>().material));
                 Grid[x - 2, z + 2].GetComponent<Renderer>().material = onSelectChoiseMaterial;
@@ -170,13 +170,13 @@ public class BoardScript : MonoBehaviour
         //Check Lower
         if (IsZExist(z - 2))
         {
-            if (IsXExist(x + 2) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x + 2) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
                 CurSelectedCells.Add(new SelectedItems(Grid[x + 2, z - 2], Grid[x + 2, z - 2].GetComponent<Renderer>().material));
                 Grid[x + 2, z - 2].GetComponent<Renderer>().material = onSelectChoiseMaterial;
                 CanAttack = true;
             }
-            if (IsXExist(x - 2) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x - 2) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
                 CurSelectedCells.Add(new SelectedItems(Grid[x - 2, z - 2], Grid[x - 2, z - 2].GetComponent<Renderer>().material));
                 Grid[x - 2, z - 2].GetComponent<Renderer>().material = onSelectChoiseMaterial;
@@ -197,7 +197,7 @@ public class BoardScript : MonoBehaviour
         for (int leftX = x - 1, tempZ = z - 1; tempZ >= 0; leftX--, tempZ--)
         {
             if (!IsCellExist(leftX, tempZ)) break;
-            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
 
             if (CanAttackHere && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
@@ -205,7 +205,7 @@ public class BoardScript : MonoBehaviour
                 Grid[leftX, tempZ].GetComponent<Renderer>().material = onSelectChoiseMaterial;
             }
 
-            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black)
             { 
                 if (IsCellExist(leftX - 1, tempZ - 1) && !Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
@@ -218,7 +218,7 @@ public class BoardScript : MonoBehaviour
         for (int rightX = x + 1, tempZ = z - 1; tempZ >= 0; rightX++, tempZ--)
         {
             if (!IsCellExist(rightX, tempZ)) break;
-            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
 
             if (CanAttackHere && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
@@ -226,7 +226,7 @@ public class BoardScript : MonoBehaviour
                 Grid[rightX, tempZ].GetComponent<Renderer>().material = onSelectChoiseMaterial;
             }
 
-            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black)
             { 
                 if (IsCellExist(rightX + 1, tempZ - 1) && !Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
@@ -239,7 +239,7 @@ public class BoardScript : MonoBehaviour
         for (int leftX = x - 1, tempZ = z + 1; tempZ >= 0; leftX--, tempZ++)
         {
             if (!IsCellExist(leftX, tempZ)) break;
-            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
 
             if (CanAttackHere && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
@@ -247,7 +247,7 @@ public class BoardScript : MonoBehaviour
                 Grid[leftX, tempZ].GetComponent<Renderer>().material = onSelectChoiseMaterial;
             }
 
-            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black)
             { 
                 if (IsCellExist(leftX - 1, tempZ + 1) && !Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
@@ -260,7 +260,7 @@ public class BoardScript : MonoBehaviour
         for (int rightX = x + 1, tempZ = z + 1; tempZ >= 0; rightX++, tempZ++)
         {
             if (!IsCellExist(rightX, tempZ)) break;
-            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
 
             if (CanAttackHere && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
@@ -268,7 +268,7 @@ public class BoardScript : MonoBehaviour
                 Grid[rightX, tempZ].GetComponent<Renderer>().material = onSelectChoiseMaterial;
             }
 
-            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black)
             { 
                 if (IsCellExist(rightX + 1, tempZ + 1) && !Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
@@ -293,7 +293,7 @@ public class BoardScript : MonoBehaviour
 
         if (IsZExist(z + 2))
         {
-            if (IsXExist(x + 2) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x + 2) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
                 CurSelectedCells.Add(new SelectedItems(Grid[x + 2, z + 2], Grid[x + 2, z + 2].GetComponent<Renderer>().material));
                 Grid[x + 2, z + 2].GetComponent<Renderer>().material = onSelectMaterial;
@@ -301,7 +301,7 @@ public class BoardScript : MonoBehaviour
                 IsAttackCombo = true;
                 CanAttack = true;
             }
-            if (IsXExist(x - 2) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x - 2) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
                 CurSelectedCells.Add(new SelectedItems(Grid[x - 2, z + 2], Grid[x - 2, z + 2].GetComponent<Renderer>().material));
                 Grid[x - 2, z + 2].GetComponent<Renderer>().material = onSelectMaterial;
@@ -313,7 +313,7 @@ public class BoardScript : MonoBehaviour
         //Check Lower
         if (IsZExist(z - 2))
         {
-            if (IsXExist(x + 2) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x + 2) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
                 CurSelectedCells.Add(new SelectedItems(Grid[x + 2, z - 2], Grid[x + 2, z - 2].GetComponent<Renderer>().material));
                 Grid[x + 2, z - 2].GetComponent<Renderer>().material = onSelectMaterial;
@@ -321,7 +321,7 @@ public class BoardScript : MonoBehaviour
                 IsAttackCombo = true;
                 CanAttack = true;
             }
-            if (IsXExist(x - 2) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.Black && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x - 2) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
                 CurSelectedCells.Add(new SelectedItems(Grid[x - 2, z - 2], Grid[x - 2, z - 2].GetComponent<Renderer>().material));
                 Grid[x - 2, z - 2].GetComponent<Renderer>().material = onSelectMaterial;
@@ -352,7 +352,7 @@ public class BoardScript : MonoBehaviour
         for (int leftX = x - 1, tempZ = z - 1; tempZ >= 0; leftX--, tempZ--)
         {
             if (!IsCellExist(leftX, tempZ)) break;
-            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
 
             if (CanAttackHere && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
@@ -361,7 +361,7 @@ public class BoardScript : MonoBehaviour
                 Grid[leftX, tempZ].GetComponent<SlotScript>().SetSelection(true);
             }
 
-            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black)
             { 
                 if (IsCellExist(leftX - 1, tempZ - 1) && !Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
@@ -374,7 +374,7 @@ public class BoardScript : MonoBehaviour
         for (int rightX = x + 1, tempZ = z - 1; tempZ >= 0; rightX++, tempZ--)
         {
             if (!IsCellExist(rightX, tempZ)) break;
-            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
 
             if (CanAttackHere && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
@@ -383,7 +383,7 @@ public class BoardScript : MonoBehaviour
                 Grid[rightX, tempZ].GetComponent<SlotScript>().SetSelection(true);
             }
 
-            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black)
             { 
                 if (IsCellExist(rightX + 1, tempZ - 1) && !Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
@@ -396,7 +396,7 @@ public class BoardScript : MonoBehaviour
         for (int leftX = x - 1, tempZ = z + 1; tempZ < 8; leftX--, tempZ++)
         {
             if (!IsCellExist(leftX, tempZ)) break;
-            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
 
             if (CanAttackHere && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
@@ -405,7 +405,7 @@ public class BoardScript : MonoBehaviour
                 Grid[leftX, tempZ].GetComponent<SlotScript>().SetSelection(true);
             }
 
-            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            if (Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black)
             { 
                 if (IsCellExist(leftX - 1, tempZ + 1) && !Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
@@ -418,7 +418,7 @@ public class BoardScript : MonoBehaviour
         for (int rightX = x + 1, tempZ = z + 1; tempZ < 8; rightX++, tempZ++)
         {
             if (!IsCellExist(rightX, tempZ)) break;
-            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White) break;
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White) break;
 
             if (CanAttackHere && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
@@ -427,7 +427,7 @@ public class BoardScript : MonoBehaviour
                 Grid[rightX, tempZ].GetComponent<SlotScript>().SetSelection(true);
             }
 
-            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black)
+            if (Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black)
             { 
                 if (IsCellExist(rightX + 1, tempZ + 1) && !Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
@@ -459,7 +459,7 @@ public class BoardScript : MonoBehaviour
 
         DestroyEnemyStonesOnTheWay(startV.x, startV.y, endX, endZ);
         
-        SetOcupied(endX, endZ, Color.White);
+        SetOcupied(endX, endZ, StonesColor.White);
 
         if (IsAttackCombo)
         {
@@ -572,13 +572,13 @@ public class BoardScript : MonoBehaviour
         }
         CurSelectedCells.RemoveRange(start, end);
     }
-    public void SetOcupied(int x, int z, Color color)
+    public void SetOcupied(int x, int z, StonesColor color)
     {
         Grid[x, z].GetComponent<SlotScript>().SetOcupied(true, color);
     }
     public void SetUnOcupied(int x, int z)
     {
-        Grid[x, z].GetComponent<SlotScript>().SetOcupied(false, Color.Empty);
+        Grid[x, z].GetComponent<SlotScript>().SetOcupied(false, StonesColor.Empty);
     }
     public bool CanSelect()
     {
@@ -624,7 +624,7 @@ public class BoardScript : MonoBehaviour
                 {
                     SetUnOcupied(x, z);
                     EAI.MakeMoveAnim(x + 1, z - 1);
-                    SetOcupied(x + 1, z - 1, Color.Black);
+                    SetOcupied(x + 1, z - 1, StonesColor.Black);
 
                     return true;
                 }
@@ -635,7 +635,7 @@ public class BoardScript : MonoBehaviour
                 {
                     SetUnOcupied(x, z);
                     EAI.MakeMoveAnim(x - 1, z - 1);
-                    SetOcupied(x - 1, z - 1, Color.Black);
+                    SetOcupied(x - 1, z - 1, StonesColor.Black);
                     
                     return true;
                 }
@@ -649,12 +649,12 @@ public class BoardScript : MonoBehaviour
         int z = (int)enemyStone.transform.position.z;
         if (IsZExist(z + 2))
         {
-            if (IsXExist(x + 2) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x + 2) && Grid[x + 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White && !Grid[x + 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
                 EnemyAttack(x, z, enemyStone, 1);
                 return true;
             }
-            if (IsXExist(x - 2) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x - 2) && Grid[x - 1, z + 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White && !Grid[x - 2, z + 2].GetComponent<SlotScript>().IsOcupied())
             {
                 EnemyAttack(x, z, enemyStone, 2);
                 return true;
@@ -662,12 +662,12 @@ public class BoardScript : MonoBehaviour
         }
         if (IsZExist(z - 2))
         {
-            if (IsXExist(x + 2) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x + 2) && Grid[x + 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White && !Grid[x + 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
                 EnemyAttack(x, z, enemyStone, 3);
                 return true;
             }
-            if (IsXExist(x - 2) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == Color.White && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
+            if (IsXExist(x - 2) && Grid[x - 1, z - 1].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White && !Grid[x - 2, z - 2].GetComponent<SlotScript>().IsOcupied())
             {
                 EnemyAttack(x, z, enemyStone, 4);
                 return true;
@@ -680,31 +680,28 @@ public class BoardScript : MonoBehaviour
         int tempX = (int)enemyStone.transform.position.x;
         int tempZ = (int)enemyStone.transform.position.z;
 
+        int animX = 0, animZ = 0;
+
         SetUnOcupied(tempX, tempZ);
         if (type == 1)
         {
-            EAI.MakeMoveAnim(tempX + 2, tempZ + 2, enemyStone);
-            ASH.FindAndDelete(tempX + 1, tempZ + 1);
-            SetOcupied(tempX + 2, tempZ + 2, Color.Black);
+            animX = tempX + 2; animZ = tempZ + 2;
         }
         else if (type == 2)
         {
-            EAI.MakeMoveAnim(tempX - 2, tempZ + 2, enemyStone);
-            ASH.FindAndDelete(tempX - 1, tempZ + 1);
-            SetOcupied(tempX - 2, tempZ + 2, Color.Black);
+            animX = tempX - 2; animZ = tempZ + 2;
         }
         else if (type == 3)
         {
-            EAI.MakeMoveAnim(tempX + 2, tempZ - 2, enemyStone);
-            ASH.FindAndDelete(tempX + 1, tempZ - 1);
-            SetOcupied(tempX + 2, tempZ - 2, Color.Black);
+            animX = tempX + 2; animZ = tempZ - 2;
         }
         else if (type == 4)
         {
-            EAI.MakeMoveAnim(tempX - 2, tempZ - 2, enemyStone);
-            ASH.FindAndDelete(tempX - 1, tempZ - 1);
-            SetOcupied(tempX - 2, tempZ - 2, Color.Black);
+            animX = tempX - 2; animZ = tempZ - 2;
         }
+        EAI.MakeMoveAnim(animX, animZ, enemyStone);
+        StartCoroutine(ASH.FindAndDelete(tempX + (animX - tempX) / 2, tempZ + (animZ - tempZ) / 2));
+        SetOcupied(animX, animZ, StonesColor.Black);
     }
     public bool CheckEnemyKingAttack(GameObject enemyKing)
     {
@@ -713,16 +710,16 @@ public class BoardScript : MonoBehaviour
 
         for (int leftX = x - 1, tempZ = z - 1; tempZ >= 0; leftX--, tempZ--)
         {
-            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black) break;
+            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black) break;
 
-            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White)
+            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White)
             {
                 if (IsCellExist(leftX - 1, tempZ - 1) && !Grid[leftX - 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     SetUnOcupied(x, z);
                     EAI.MakeMoveAnim(leftX - 1, tempZ - 1, enemyKing);
-                    SetOcupied(leftX - 1, tempZ - 1, Color.Black);
-                    ASH.FindAndDelete(leftX, tempZ);
+                    SetOcupied(leftX - 1, tempZ - 1, StonesColor.Black);
+                    StartCoroutine(ASH.FindAndDelete(leftX, tempZ));
                     return true;
                 } else break;
             }
@@ -730,16 +727,16 @@ public class BoardScript : MonoBehaviour
 
         for (int rightX = x + 1, tempZ = z - 1; tempZ >= 0; rightX++, tempZ--)
         {
-            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black) break;
+            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black) break;
 
-            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White)
+            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White)
             {
                 if (IsCellExist(rightX + 1, tempZ - 1) && !Grid[rightX + 1, tempZ - 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     SetUnOcupied(x, z);
                     EAI.MakeMoveAnim(rightX + 1, tempZ - 1, enemyKing);
-                    SetOcupied(rightX + 1, tempZ - 1, Color.Black);
-                    ASH.FindAndDelete(rightX, tempZ);
+                    SetOcupied(rightX + 1, tempZ - 1, StonesColor.Black);
+                    StartCoroutine(ASH.FindAndDelete(rightX, tempZ));
                     return true;
                 } else break;
             }
@@ -747,16 +744,16 @@ public class BoardScript : MonoBehaviour
 
         for (int leftX = x - 1, tempZ = z + 1; tempZ < 8; leftX--, tempZ++)
         {
-            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black) break;
+            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black) break;
 
-            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White)
+            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White)
             {
                 if (IsCellExist(leftX - 1, tempZ + 1) && !Grid[leftX - 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     SetUnOcupied(x, z);
                     EAI.MakeMoveAnim(leftX - 1, tempZ + 1, enemyKing);
-                    SetOcupied(leftX - 1, tempZ + 1, Color.Black);
-                    ASH.FindAndDelete(leftX, tempZ);
+                    SetOcupied(leftX - 1, tempZ + 1, StonesColor.Black);
+                    StartCoroutine(ASH.FindAndDelete(leftX, tempZ));
                     return true;
                 } else break;
             }
@@ -764,16 +761,16 @@ public class BoardScript : MonoBehaviour
 
         for (int rightX = x + 1, tempZ = z + 1; tempZ < 8; rightX++, tempZ++)
         {
-            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black) break;
+            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black) break;
 
-            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.White)
+            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.White)
             {
                 if (IsCellExist(rightX + 1, tempZ + 1) && !Grid[rightX + 1, tempZ + 1].GetComponent<SlotScript>().IsOcupied())
                 {
                     SetUnOcupied(x, z);
                     EAI.MakeMoveAnim(rightX + 1, tempZ + 1, enemyKing);
-                    SetOcupied(rightX + 1, tempZ + 1, Color.Black);
-                    ASH.FindAndDelete(rightX, tempZ);
+                    SetOcupied(rightX + 1, tempZ + 1, StonesColor.Black);
+                    StartCoroutine(ASH.FindAndDelete(rightX, tempZ));
                     return true;
                 } else break;
             }
@@ -784,56 +781,56 @@ public class BoardScript : MonoBehaviour
     {
         for (int leftX = x - 1, tempZ = z - 1; tempZ >= 0; leftX--, tempZ--)
         {
-            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black) break;
+            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black) break;
             
             if (IsXExist(leftX) && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
                 SetUnOcupied(x, z);
                 EAI.MakeMoveAnim(leftX, tempZ, enemyKing);
-                SetOcupied(leftX, tempZ, Color.Black);
-                ASH.FindAndDelete(leftX, tempZ);
+                SetOcupied(leftX, tempZ, StonesColor.Black);
+                StartCoroutine(ASH.FindAndDelete(leftX, tempZ));
                 return true;
             }
         }
 
         for (int rightX = x + 1, tempZ = z - 1; tempZ >= 0; rightX++, tempZ--)
         {
-            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black) break;
+            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black) break;
 
             if (IsXExist(rightX) && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
                 SetUnOcupied(x, z);
                 EAI.MakeMoveAnim(rightX, tempZ, enemyKing);
-                SetOcupied(rightX, tempZ, Color.Black);
-                ASH.FindAndDelete(rightX, tempZ);
+                SetOcupied(rightX, tempZ, StonesColor.Black);
+                StartCoroutine(ASH.FindAndDelete(rightX, tempZ));
                 return true;
             }
         }
 
         for (int leftX = x - 1, tempZ = z + 1; tempZ < 8; leftX--, tempZ++)
         {
-            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black) break;
+            if (IsXExist(leftX) && Grid[leftX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black) break;
 
             if (IsXExist(leftX) && !Grid[leftX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
                 SetUnOcupied(x, z);
                 EAI.MakeMoveAnim(leftX, tempZ, enemyKing);
-                SetOcupied(leftX, tempZ, Color.Black);
-                ASH.FindAndDelete(leftX, tempZ);
+                SetOcupied(leftX, tempZ, StonesColor.Black);
+                StartCoroutine(ASH.FindAndDelete(leftX, tempZ));
                 return true;
             }
         }
 
         for (int rightX = x + 1, tempZ = z + 1; tempZ < 8; rightX++, tempZ++)
         {
-            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == Color.Black) break;
+            if (IsXExist(rightX) && Grid[rightX, tempZ].GetComponent<SlotScript>().WhatIsColor() == StonesColor.Black) break;
 
             if (IsXExist(rightX) && !Grid[rightX, tempZ].GetComponent<SlotScript>().IsOcupied())
             {
                 SetUnOcupied(x, z);
                 EAI.MakeMoveAnim(rightX, tempZ, enemyKing);
-                SetOcupied(rightX, tempZ, Color.Black);
-                ASH.FindAndDelete(rightX, tempZ);
+                SetOcupied(rightX, tempZ, StonesColor.Black);
+                StartCoroutine(ASH.FindAndDelete(rightX, tempZ));
                 return true;
             }
         }

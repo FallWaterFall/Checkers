@@ -6,7 +6,6 @@ public class ClickHandle : MonoBehaviour
 {
     private AllyStonesHandle ASH;
     private BoardScript BS;
-    [SerializeField] Material commonMaterial;
     [SerializeField] GameObject allyStonesObj;
     [SerializeField] GameObject boardObj;
     private void Start()

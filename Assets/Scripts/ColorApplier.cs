@@ -10,6 +10,7 @@ public static class ColorApplier
     }
     public static void ApplyNewColor(GameObject obj, Color32 c2)
     {
+        if (obj.tag == "Particle") return;
         Renderer objRenderer = obj.GetComponent<Renderer>();
         for (int j = 0; j < objRenderer.materials.Length; j++)
         {

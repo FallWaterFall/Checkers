@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
         for (int i = 0; i < this.transform.childCount; i++)
         {
             enemyStones.Add(this.transform.GetChild(i).gameObject);
-            BS.SetOcupied((int)enemyStones[i].transform.position.x, (int)enemyStones[i].transform.position.z, Color.Black);
+            BS.SetOcupied((int)enemyStones[i].transform.position.x, (int)enemyStones[i].transform.position.z, StonesColor.Black);
         }
     }
     private void FixedUpdate()
@@ -115,6 +115,8 @@ public class EnemyAI : MonoBehaviour
     {
         BS.SetCanSelect(false);
 
+        moveAnimObj.transform.position += new Vector3(0, 0.2f, 0);
+
         moveAnimEndX = endX;
         moveAnimEndZ = endZ;
         moveAnimDeltaX = (endX - moveAnimObj.transform.position.x) / 25f;
@@ -125,6 +127,8 @@ public class EnemyAI : MonoBehaviour
     public void MakeMoveAnim(int endX, int endZ, GameObject obj)
     {
         BS.SetCanSelect(false);
+
+        obj.transform.position += new Vector3(0, 0.2f, 0);
 
         moveAnimObj = obj;
         moveAnimEndX = endX;
@@ -140,7 +144,7 @@ public class EnemyAI : MonoBehaviour
 
         if ((moveAnimObj.transform.position.x >= moveAnimEndX && moveAnimDirection == 0) || (moveAnimObj.transform.position.x <= moveAnimEndX && moveAnimDirection == 1))
         {
-            moveAnimObj.transform.position = new Vector3(moveAnimEndX, 0.2f , moveAnimEndZ);
+            moveAnimObj.transform.position = new Vector3(moveAnimEndX, moveAnimObj.transform.position.y - 0.2f , moveAnimEndZ);
 
             moveAnimDeltaX = 0;
             moveAnimDeltaZ = 0;
