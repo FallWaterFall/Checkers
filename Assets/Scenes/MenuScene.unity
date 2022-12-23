@@ -3437,7 +3437,6 @@ GameObject:
   - component: {fileID: 192650551}
   - component: {fileID: 192650550}
   - component: {fileID: 192650549}
-  - component: {fileID: 192650554}
   m_Layer: 5
   m_Name: MenuCanvas
   m_TagString: Untagged
@@ -3542,18 +3541,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &192650554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192650548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994b09f2e381a4918a4fcbf5ce2edb0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &198910791
 GameObject:
   m_ObjectHideFlags: 0
@@ -17975,7 +17962,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 192650554}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LobbyCreate, Assembly-CSharp
         m_MethodName: CreateRoom
         m_Mode: 1
@@ -33095,7 +33082,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 192650554}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LobbyCreate, Assembly-CSharp
         m_MethodName: JoinRoom
         m_Mode: 1

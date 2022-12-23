@@ -34,7 +34,7 @@ public class BoardServer : MonoBehaviour
     }
     private void Start()
     {
-        SH = GameObject.Find("Pivot").GetComponent<StonesHandle>();
+        SH = GameObject.FindObjectOfType<StonesHandle>();
     }
     public void SelectCells(int x, int z)
     {

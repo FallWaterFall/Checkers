@@ -13,28 +13,23 @@ public class StonesHandle : MonoBehaviour
     private GameObject moveAnimObj = null;
     private float moveAnimDeltaX, moveAnimDeltaZ, moveAnimEndX, moveAnimEndZ;
     private int moveAnimDirection;
-    private void Start()
+    private void Awake()
     {
         BS = GameObject.Find("Board").GetComponent<BoardServer>();
-
-        for (int i = 0; i < this.transform.GetChild(0).childCount; i++)
-        {
-            var stone = this.transform.GetChild(0).GetChild(i).gameObject;
-            BS.SetOcupied((int)stone.transform.position.x, (int)stone.transform.position.z, StonesColor.White);
-            
-            allyStones.Add(stone);
-        }
-        for (int i = 0; i < this.transform.GetChild(1).childCount; i++)
-        {
-            var stone = this.transform.GetChild(1).GetChild(i).gameObject;
-            BS.SetOcupied((int)stone.transform.position.x, (int)stone.transform.position.z, StonesColor.Black);
-            
-            enemyStones.Add(stone);
-        }
     }
     public void FixedUpdate()
     {
         if (moveAnimObj != null) MoveStoneAnim();
+    }
+    public void AddAllyStone(GameObject obj)
+    {
+        BS.SetOcupied((int)obj.transform.position.x, (int)obj.transform.position.z, StonesColor.White);
+        allyStones.Add(obj);
+    }
+    public void AddEnemyStone(GameObject obj)
+    {
+        BS.SetOcupied((int)obj.transform.position.x, (int)obj.transform.position.z, StonesColor.Black); 
+        enemyStones.Add(obj);
     }
     public void SelectStone(GameObject obj)
     {
@@ -47,6 +42,8 @@ public class StonesHandle : MonoBehaviour
     }
     public void SelectStone(int x, int z, StonesColor clickedColor)
     {
+        Debug.Log(allyStones.Count + " " + enemyStones.Count);
+
         var obj = FindStoneObj(x, z);
 
         if (BS.GetWhoseTurn() != clickedColor || (!BS.CanSelect() && !BS.IsInCanSelectList(obj))) return;

@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
-public class CellScriptServer : MonoBehaviourPunCallbacks, IPunObservable
+public class CellScriptServer : MonoBehaviour
 {
     private bool isOcupied = false;
     [SerializeField] private StonesColor ocupiedColor = StonesColor.Empty;
@@ -32,18 +31,5 @@ public class CellScriptServer : MonoBehaviourPunCallbacks, IPunObservable
     public void SetSelection(bool b)
     {
         isSelected = b;
-    }
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(isOcupied);
-            stream.SendNext(ocupiedColor);
-        }
-        else
-        {
-            isOcupied = (bool)stream.ReceiveNext();
-            ocupiedColor = (StonesColor)stream.ReceiveNext();
-        }
     }
 }

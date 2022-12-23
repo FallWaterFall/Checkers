@@ -10,8 +10,8 @@ public class ClickHandleServer : MonoBehaviour
     [SerializeField] private GameObject boardObj;
     private void Start()
     {
-        SH = GameObject.Find("Pivot").GetComponent<StonesHandle>();
-        BS = GameObject.Find("Board").GetComponent<BoardServer>();
+        SH = GameObject.FindObjectOfType<StonesHandle>();
+        BS = GameObject.FindObjectOfType<BoardServer>();
     }
     private void Update()
     {
